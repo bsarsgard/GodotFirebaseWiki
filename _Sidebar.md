@@ -1,6 +1,6 @@
 # Home
-### [Installation and Activation](/wiki/Installation-and-Activation)
+### [Installation and Activation](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation)
 ### API Usage
-- [Authentication and User Management](/wiki/Authentication-and-User-Management)
+- [Authentication and User Management](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management)
 
 ### Implementation Examples
