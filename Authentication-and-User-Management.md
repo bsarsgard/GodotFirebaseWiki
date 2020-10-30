@@ -4,6 +4,7 @@ This plugin offers several methods to call this APIs just with one line of code.
 #### Contents on this page:
 - [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
 - [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
+- [Examples](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#examples)
 
 ***
 
@@ -59,7 +60,10 @@ If the response body has `RESPONSE_USERDATA`, the script will emit a signal "use
 
 #### Body has INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER_DISABLED or WEAK_PASSWORD
 If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER_DISABLED or WEAK_PASSWORD`, the login has failed and the script will emit a signal "login_failed". It will also pass the error code and error message to be printed into the console
+<p align="right"><a href="#contents-on-this-page">Back</a></p>  
 
+
+***
 ## Examples
 
 ![signup login page](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Docs/Images/signup_login_page.png)
