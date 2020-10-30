@@ -1,6 +1,5 @@
 > You can query the Firebase Auth backend through a REST API. This can be used for various operations such as creating new users, signing in existing ones and editing or deleting these users.  
 This plugin offers several methods to call this APIs just with one line of code.
-<br>
 
 #### Contents on this page:
 - [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
