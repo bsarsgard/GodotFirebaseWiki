@@ -2,7 +2,7 @@
 This plugin offers several methods to call this APIs just with one line of code.
 <br>
 
-*Contents on this page:*
+#### Contents on this page:
 - [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
 - [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
 
@@ -25,9 +25,11 @@ var login_request_body = {
    }
 ```
 
-From there the script will POST the data to the `signup_request_url` and add the user to the application
+From there the script will POST the data to the `signup_request_url` and add the user to the application  
+<p align="right"><a href="#contents-on-this-page">Back</a></p>  
+
+
 ***
-  
 ## Login with Email
 From inside of Godot after you have set your configurations in the **Firebase.gd** script, you are able to call
 ```
@@ -87,3 +89,7 @@ func on_login_failed(error_code, message):
 	print("error code: " + str(error_code))
 	print("message: " + str(message))
 ```
+<p align="right"><a href="#contents-on-this-page">Back</a></p>  
+
+
+***
