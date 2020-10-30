@@ -1,4 +1,14 @@
 # Signup and Login
+> You can query the Firebase Auth backend through a REST API. This can be used for various operations such as creating new users, signing in existing ones and editing or deleting these users.
+This plugin offers several methods to call this APIs just with one line of code.
+<br>
+
+*Contents on this page:*
+- [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
+- [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
+
+***
+
 
 ## Signup with Email
 From inside of Godot after you have set your configurations in the **Firebase.gd** script, you are able to call
@@ -17,7 +27,8 @@ var login_request_body = {
 ```
 
 From there the script will POST the data to the `signup_request_url` and add the user to the application
-
+***
+  
 ## Login with Email
 From inside of Godot after you have set your configurations in the **Firebase.gd** script, you are able to call
 ```
@@ -38,7 +49,6 @@ From there the script will POST the data to the `signin_request_url`, and wait f
 
 #### Unable to parse body
 If the script is unable to parse the body, it will print our an error to the console and 'return' out of the function
-
 
 #### Body has RESPONSE_SIGNIN, RESPONSE_SIGNUP
 If the response body has `RESPONSE_SIGNIN, RESPONSE_SIGNUP`, the user will be logged in and the refresh countdown will start
