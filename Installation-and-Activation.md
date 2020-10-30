@@ -6,6 +6,8 @@
 ![Plugin Section](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Images/plugins_section.png)
 5. From there, you will have an autoload singleton with the variables Auth and Database. Reference it by using Firebase.Auth, etc.
 
+***
+
 ## Activation
 In order 
 1. Go create a Firebase app at console.firebase.google.com. A Guide can be found [Here](https://firebase.google.com/docs/projects/learn-more#setting_up_a_firebase_project_and_connecting_apps)
