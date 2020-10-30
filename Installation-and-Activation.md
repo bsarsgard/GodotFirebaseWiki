@@ -22,6 +22,6 @@ In order
     4. Add a name to your web app and click **Register App**<br>
     ![FB Register App](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Images/fb_register_app.png)
 
-3. This will show a series of values called "config". Take those values and copy them to the appropriate fields in **Firebase.gd**, found in the **GDFirebase** folder
-4. Use Firebase.Database.get_database_reference(path, filter) to add a listener at a given path in your database. It will return to you a value to which you can hook up to a few different signals, and to which you can push data. You do not have to manually add it to the scene tree, as it gets added automatically. You can listen to many places at once, as needed. You can, optionally, pass a Dictionary of tags (found in FirebaseDatabase) to values representing your filters and queries. Queries are currently cached, so they can't be dynamically updated, but I can add that if there's a desire.
+3. This will show a series of values called "config". Take those values and copy them to the appropriate fields in `Firebase.gd`, found in the **GDFirebase** folder
+4. Use `Firebase.Database.get_database_reference(path, filter)` to add a listener at a given path in your database. It will return to you a value to which you can hook up to a few different signals, and to which you can push data. You do not have to manually add it to the scene tree, as it gets added automatically. You can listen to many places at once, as needed. You can, optionally, pass a Dictionary of tags (found in FirebaseDatabase) to values representing your filters and queries. Queries are currently cached, so they can't be dynamically updated, but I can add that if there's a desire.
 
