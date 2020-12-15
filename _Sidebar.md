@@ -1,4 +1,4 @@
-# Home
+# [Home](https://github.com/WolfgangSenff/GodotFirebase/wiki)
 ### Contributing
 - [Guidelines](https://github.com/WolfgangSenff/GodotFirebase/wiki/Contributing)
 - [Reporting An Issue](https://github.com/WolfgangSenff/GodotFirebase/wiki/Contributing#issues)
