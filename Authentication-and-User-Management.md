@@ -66,7 +66,7 @@ If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER
 ***
 ## Examples
 
-![signup login page](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Docs/Images/signup_login_page.png)
+![signup login page](/images/signup_login_page.png)
 ```python
 extends Node2D
 
