@@ -3,7 +3,7 @@
 2. Open your Project Settings
 3. Go to Plugins
 4. Activate the GDFirebase plugin<br>
-![Plugin Section](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Images/plugins_section.png)
+![Plugin Section](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/plugins_section.png)
 5. From there, you will have an autoload singleton with the variables Auth and Database. Reference it by using Firebase.Auth, etc.
 
 ***
@@ -13,16 +13,16 @@ In order
 1. Go create a Firebase app at console.firebase.google.com. A Guide can be found [Here](https://firebase.google.com/docs/projects/learn-more#setting_up_a_firebase_project_and_connecting_apps)
 2. Once the app has been created, add a web app to it
     1. Click on the **Project Settings** option<br>
-    ![FB Project Settings](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Images/fb_project_settings.png)
+    ![FB Project Settings](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/fb_project_settings.png)
 
     2. Click on the **Add App** button<br>
-    ![FB Add App](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Images/fb_add_app.png)
+    ![FB Add App](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/fb_add_app.png)
 
     3. Click the **Web App** button<br>
-    ![FB Web App](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Images/fb_web_app.png)
+    ![FB Web App](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/fb_web_app.png)
 
     4. Add a name to your web app and click **Register App**<br>
-    ![FB Register App](https://github.com/WolfgangSenff/GodotFirebase/blob/master/Images/fb_register_app.png)
+    ![FB Register App](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/fb_register_app.png)
 
 3. This will show a series of values called "config". To use them you have two options:  
     1. Take those values and copy them to the appropriate fields in `Firebase.gd`, found in the **GDFirebase** folder, or...  
