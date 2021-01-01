@@ -2,6 +2,7 @@
 ### Contributing
 - [Guidelines](https://github.com/WolfgangSenff/GodotFirebase/wiki/Contributing)
 - [Reporting An Issue](https://github.com/WolfgangSenff/GodotFirebase/wiki/Contributing#issues)
+- [Testing](https://github.com/WolfgangSenff/GodotFirebase/wiki/Testing)
 - [Pull Requests](https://github.com/WolfgangSenff/GodotFirebase/wiki/Contributing#pull-requests)
 ### Installation and Activation
 - [Guide](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation)
