@@ -30,3 +30,8 @@ Tests exist in the following directories.
 - `plugin/test/integration` holds large tests of the entire plugin's functionality combined.
 
 Gut has an extensive API for writing tests. Recommended reading includes its [Quick Start page](https://github.com/bitwes/Gut/wiki/Quick-Start) and its [Creating Tests page](https://github.com/bitwes/Gut/wiki/Creating-Tests).
+
+### Notes, Best Practices & Guidelines
+
+- The test suite is run from the command line via a GitHub Action for each pull request.
+- In order to avoid memory leaks (which will cause major issues during our CI/CD pipelines), **all dynamically-instantiated nodes must be manually freed in tests**. This can be done by calling `queue_free()` on said nodes.
