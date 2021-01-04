@@ -6,12 +6,12 @@
 ![Plugin Section](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/plugins_section.png)
 5. From there, you will have an autoload singleton with the variables Auth and Database. Reference it by using Firebase.Auth, etc.
 
-***
-
 ## Activation
-In order 
+
 1. Go create a Firebase app at console.firebase.google.com. A Guide can be found [Here](https://firebase.google.com/docs/projects/learn-more#setting_up_a_firebase_project_and_connecting_apps)
-2. Once the app has been created, add a web app to it
+
+2. Once the app has been created, add a web app to it:
+
     1. Click on the **Project Settings** option<br>
     ![FB Project Settings](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/fb_project_settings.png)
 
@@ -24,9 +24,26 @@ In order
     4. Add a name to your web app and click **Register App**<br>
     ![FB Register App](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/fb_register_app.png)
 
-3. This will show a series of values called "config". To use them you have two options:  
-    1. Take those values and copy them to the appropriate fields in `Firebase.gd`, found in the **GDFirebase** folder, or...  
-    2. Copy and paste the file `override.cfg` from the root of this plugin folder (`GodotFirebase/override.cfg`) to the root of you project folder (`res://`). Reload the project, and you will find a new Category inside `Project > Project Settings > General`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go.   
-![Imgur](https://imgur.com/sRDdnoW.png)  
+3. This will show a series of values called "config". To use them you have two options:
+
+    1. Take those values and copy them to the appropriate variables in `res://addons/godot-firebase/Firebase.gd`.
+
+    2. (Recommended) Create a `override.cfg` file at the root of the project (specifically, `res://override.cfg`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
+
+```
+[environment_variables]
+
+apiKey=""
+authDomain=""
+databaseURL=""
+projectId=""
+storageBucket=""
+messagingSenderId=""
+appId=""
+measurementId=""
+```
+
+![Imgur](https://imgur.com/sRDdnoW.png)
+
 4. Use `Firebase.Database.get_database_reference(path, filter)` to add a listener at a given path in your database. It will return to you a value to which you can hook up to a few different signals, and to which you can push data. You do not have to manually add it to the scene tree, as it gets added automatically. You can listen to many places at once, as needed. You can, optionally, pass a Dictionary of tags (found in FirebaseDatabase) to values representing your filters and queries. Queries are currently cached, so they can't be dynamically updated, but I can add that if there's a desire.
 
