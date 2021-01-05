@@ -9,7 +9,7 @@ If you are unsure where to start, check out the following pages:
 * Demos and Getting Started
 
 ## Design
-This plugin is designed around the Firebase REST API, and as such we are limited by what the Google Firebase team has implemented. However, this means it is massively cross-platform, far more than any other Firebase plugin or library, because they have code that is (generally) Android- or iOS-only. It is verified to work across all of the following platforms at present:
+This plugin is designed around the Firebase REST API. This means it is massively cross-platform, far more than any other Firebase plugin or library, because they have code that is (generally) Android- or iOS-only. Since it's a Godot plugin, it also does not require recompiling the Godot with an additional module whenever an updated version is released. It is verified to work across all of the following platforms at present:
 
 ## Supported platforms
 * Android
