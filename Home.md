@@ -6,3 +6,30 @@ If you are unsure where to start, check out the following pages:
 
 * [Installation and Activation](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation)
 * [Authentication and User Management](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management)
+* [Demos and Getting Started]
+
+## Design
+This plugin is designed around the Firebase REST API, and as such we are limited by what the Google Firebase team has implemented. However, this means it is massively cross-platform, far more than any other Firebase plugin or library, because they have code that is (generally) Android- or iOS-only. It is verified to work across all of the following platforms at present:
+
+## Supported platforms
+* Android
+* iOS
+* Mac
+* Windows
+* Linux
+* Serverless
+* UWP
+
+At the moment, there appears to be a bug with HTML5 export, but the team will be verifying/debugging it in the near future.
+
+## Supported features
+[Realtime Database]
+[Firestore]
+[Authentication and User Management]
+
+## Unsupported features
+* Dynamic Links - Link Shortener (in progress)
+* Analytics - no real REST API at the moment
+* Storage - preliminary investigations have begun
+* Offline support - preliminary investigations have begun
+* Remote Config - preliminary investigations have begun
