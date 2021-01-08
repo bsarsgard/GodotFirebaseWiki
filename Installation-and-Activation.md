@@ -28,10 +28,10 @@
 
     1. Take those values and copy them to the appropriate variables in `res://addons/godot-firebase/Firebase.gd`.
 
-    2. (Recommended) Create a `override.cfg` file at the root of the project (specifically, `res://override.cfg`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
+    2. (Recommended) Create a `override.cfg` file at the root of the project (specifically, `res://override.cfg`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General ↝ Firebase`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
 
 ```
-[environment_variables]
+[firebase/environment_variables]
 
 apiKey=""
 authDomain=""
@@ -43,7 +43,7 @@ appId=""
 measurementId=""
 ```
 
-![Imgur](https://imgur.com/sRDdnoW.png)
+![Project Settings Firebase](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/project_settings_firebase.png)
 
 4. Use `Firebase.Database.get_database_reference(path, filter)` to add a listener at a given path in your database. It will return to you a value to which you can hook up to a few different signals, and to which you can push data. You do not have to manually add it to the scene tree, as it gets added automatically. You can listen to many places at once, as needed. You can, optionally, pass a Dictionary of tags (found in FirebaseDatabase) to values representing your filters and queries. Queries are currently cached, so they can't be dynamically updated, but I can add that if there's a desire.
 
