@@ -4,6 +4,9 @@ This plugin offers several methods to call these APIs just with one line of code
 ## Contents on this page:
 - [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
 - [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
+- [Verify User Account](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#verify-user-account)
+- [Change User Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-email)
+- [Change User Password](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-password)
 - [Examples](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#examples)
 
 ***
@@ -96,7 +99,7 @@ var change_email_body = {
 From there the script will post the data to the 'update_account_request_url', and wait for a response. The email for the associated user will then be updated in Firebase. Note that this function is for a user to change their own email, an admin can edit the email with the Web GUI.
 
 ***
-### Change User Email
+### Change User Password
 ```
 Firebase.Auth.change_user_password(password)
 ```
