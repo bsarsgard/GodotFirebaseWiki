@@ -11,5 +11,6 @@
 - [Activation](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#activation)
 ### API Usage
 - [Authentication and User Management](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management)
+- [Firestore](https://github.com/WolfgangSenff/GodotFirebase/wiki/Firestore)
 ### Implementation Examples
 - Coming Soon
