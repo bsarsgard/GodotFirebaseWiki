@@ -5,12 +5,14 @@ This plugin offers several methods to call these APIs just with one line of code
 - [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
 - [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
 - [Verify User Account](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#verify-user-account)
+- [Get User Data](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#get-user-data)
 - [Change User Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-email)
 - [Change User Password](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-password)
+- [Send Password Reset Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#send-password-reset-email)
+- [Delete User Account](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#delete-user-account)
 - [Examples](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#examples)
 
 ***
-
 
 ## Signup with Email
 ```
@@ -81,7 +83,16 @@ var account_verification_body = {
 From there the script will POST the data to the `oobcode_request_url`, and wait for a response. The email associated with the ID will receive an email with a link to verify their account.
 
 ***
+### Get User Data
+```
+Firebase.Auth.get_user_data()
+```
+
+This function returns all the information for the currently logged in user by send the current ID Token. The script will post the data to the `userdata_request_url`, and wait for a response.
+
+***
 ### Change User Email
+> Note that there is no verify step here. This function will change the email as soon as it is run
 ```
 Firebase.Auth.change_user_email(email)
 ```
@@ -96,10 +107,11 @@ var change_email_body = {
    }
 ```
 
-From there the script will post the data to the 'update_account_request_url', and wait for a response. The email for the associated user will then be updated in Firebase. Note that this function is for a user to change their own email, an admin can edit the email with the Web GUI.
+From there the script will post the data to the `update_account_request_url`, and wait for a response. The email for the associated user will then be updated in Firebase. Note that this function is for a user to change their own email, an admin can edit the email with the Web GUI.
 
 ***
 ### Change User Password
+> Note that there is no verify step here. This function will change the password as soon as it is run
 ```
 Firebase.Auth.change_user_password(password)
 ```
@@ -114,7 +126,35 @@ var change_password_body = {
    }
 ```
 
-From there the script will post the data to the 'update_account_request_url', and wait for a response. The password for the associated user will then be updated in Firebase. Note that this function is for a user to change their own password.
+From there the script will post the data to the `update_account_request_url`, and wait for a response. The password for the associated user will then be updated in Firebase. Note that this function is for a user to change their own password.
+
+***
+### Send Password Reset Email
+```
+Firebase.Auth.send_password_reset_email(email)
+```
+
+This function is used to send a password reset email to a user. The function requires the email of the user who needs to be reset. It generates the password_reset_body and inserts all the correct data.
+
+```python
+var password_reset_body = {
+	"requestType":"password_reset",
+	"email":"",
+   }
+```
+
+From there the script will POST the data to the `oobcode_request_url`, and wait for a response. The user will get an email from the system with a link to reset their password. 
+
+***
+### Delete User Account
+> Note that there is no verify step here. This function will delete the user account as soon as it is run
+```
+Firebase.Auth.delete_user_account()
+```
+
+This function is used to delete the user account from Firebase for the currently logged in user by sending the current ID Token. The script will post the data to the `delete_account_request_url`.
+
+This should be used with extreme caution as there is no restoring an account once it is gone. Note that this function is for a user to delete their own account, an admin can also do this via the Web GUI.
 
 ***
 ## Examples
