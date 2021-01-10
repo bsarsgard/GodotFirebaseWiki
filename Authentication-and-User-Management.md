@@ -10,7 +10,6 @@ This plugin offers several methods to call these APIs just with one line of code
 
 
 ## Signup with Email
-From inside of Godot after you have set your configurations in the **Firebase.gd** script, you are able to call
 ```
 Firebase.Auth.signup_with_email(email, password)
 ```
@@ -31,7 +30,6 @@ From there the script will POST the data to the `signup_request_url` and add the
 
 ***
 ## Login with Email
-From inside of Godot after you have set your configurations in the **Firebase.gd** script, you are able to call
 ```
 Firebase.Auth.login_with_email(email, password)
 ```
@@ -60,8 +58,60 @@ If the response body has `RESPONSE_USERDATA`, the script will emit a signal "use
 
 #### Body has INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER_DISABLED or WEAK_PASSWORD
 If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER_DISABLED or WEAK_PASSWORD`, the login has failed and the script will emit a signal "login_failed". It will also pass the error code and error message to be printed into the console
-<p align="right"><a href="#contents-on-this-page">Back</a></p>  
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
+***
+### Verify User Account
+```
+Firebase.Auth.send_account_verification_email()
+```
+
+This function is used to send an account verification to an email associated with an ID. This will auto generate the account_verification_body and insert the correct data. This is best used after the user registers their account.
+
+```python
+var account_verification_body = {
+	"requestType":"verify_email",
+	"idToken":"",
+   }
+```
+
+From there the script will POST the data to the `oobcode_request_url`, and wait for a response. The email associated with the ID will receive an email with a link to verify their account.
+
+***
+### Change User Email
+```
+Firebase.Auth.change_user_email(email)
+```
+
+This function is used to change the email address associated with the currently logged in user account. This function generates the change_email_body and inserts the correct data.
+
+```python
+var change_email_body = {
+	"idToken":"",
+	"email":"",
+	"returnSecureToken": true,
+   }
+```
+
+From there the script will post the data to the 'update_account_request_url', and wait for a response. The email for the associated user will then be updated in Firebase. Note that this function is for a user to change their own email, an admin can edit the email with the Web GUI.
+
+***
+### Change User Email
+```
+Firebase.Auth.change_user_password(password)
+```
+
+This function is used to change the password associated with the currently logged in user account. This function generates the change_password_body and inserts the correct data.
+
+```python
+var change_password_body = {
+	"idToken":"",
+	"password":"",
+	"returnSecureToken": true,
+   }
+```
+
+From there the script will post the data to the 'update_account_request_url', and wait for a response. The password for the associated user will then be updated in Firebase. Note that this function is for a user to change their own password.
 
 ***
 ## Examples
