@@ -195,6 +195,7 @@ This should be used with extreme caution as there is no restoring an account onc
 ***
 ## Examples
 
+#### Login with Email and Password
 ![signup login page](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/signup_login_page.png)
 ```python
 extends Node2D
@@ -223,5 +224,28 @@ func on_login_failed(error_code, message):
 ```
 <p align="right"><a href="#contents-on-this-page">Back</a></p>  
 
+
+***
+#### Login with Google OAuth
+![signup login page](./images/OAuth/example/example.png)
+```python
+extends Node
+
+func _ready():
+	Firebase.Auth.connect("login_succeeded", self, "_on_login_succeeded")
+	Firebase.Auth.connect("login_failed",self, "_on_login_failed")
+
+func _on_login_succeeded(user : Dictionary):
+	$Label.set_text("Successfully logged in with oAuth2 as: {email}".format({email=user.email}))
+
+func _on_GetGoogleAuth_button_pressed():
+	$Label.set_text("Waiting for an authorization code...")
+	Firebase.Auth.get_google_auth()
+
+func _on_SignInWithGoogle_button_pressed():
+	$Label.set_text("Exchanging authorization code with a oath token...")
+	Firebase.Auth.login_with_oauth($LineEdit.get_text())
+```
+<p align="right"><a href="#contents-on-this-page">Back</a></p>  
 
 ***
