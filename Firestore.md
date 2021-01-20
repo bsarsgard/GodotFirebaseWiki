@@ -27,16 +27,34 @@ firestore_collection = Firebase.Firestore.collection('COLLECTION_NAME')
 .get(documentId : String)
 ```
 
-The following will return a document from Firestore with the `DOCUMENT_ID` that is specified to an object called `firestore_document`.
+**Note:** Unlike collections (which is just a reference) this function won't return directly a real document, but will request the specified document which will be returned with a signal.  
+The following methods will let you return a document from Firestore with the `DOCUMENT_ID` that is specified to an object called `firestore_document`: 
+1. Call the `.get()` function and than yield for the collection to return it with a signal
+```gdscript
+var collection : FirestoreCollectoin = Firebase.Firestore.collection(COLLECTION_ID)
+collection.get(DOCUMENT_ID)
+var document : FirestoreDocument = yield(collection, "get_document")
+```
+2. Connect a signal to the collection and get the document separately
+```python
+var collection : FirestoreCollectoin = Firebase.Firestore.collection(COLLECTION_ID)
+collection.connect("get_document",self,"_on_get_document")
+collection.get(DOCUMENT_ID)
 
-```
-firestore_document = firestore_collection.get('DOCUMENT_ID')
-```
+[...]
+
+func _on_get_document(document : FirestoreDocument) -> void:
+	pass
+``` 
 
 The following will parse the data into a human readable format by using the function `fields2dict`
 
 ```
 print(firestore_document.fields2dict(firestore_document.document))
+```
+Alternatively, a direct print will return the same result. The parsing will be done internally.
+```
+print(firestore_document)
 ```
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
