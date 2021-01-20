@@ -52,15 +52,15 @@ In order to let users login with their own Google account to your app, the OAuth
 This process will not be enabled with the main configuration, but still it is *not mandatory* to use standard login methods.  
 To enable Google OAuth Authentication, follow these steps:
 1. In your project, enable "Google" in "Sign-in Method":
-![enable_sign_in]()
+![enable_sign_in](./images/OAuth/sign.png)
 2. Go to [console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials):
 ![go_to](./images/OAuth/browser.png)
 3. Select the project you are working on (and eventually, your organization):
-![select_project]()
+![select_project](./images/OAuth/project.gif)
 4. Press the "+ Create Credentials" button and chose "ID Client OAuth" to register new credentials:
-![create_credentials]()
+![create_credentials](./images/OAuth/id.png)
 5. Select **Desktop Application**, then give a name to your credentials:
-![desktop]()
+![desktop](./images/OAuth/type.png)
 6. Create your credentials and copy-paste them in the configuration file `override.cfg`, or directly in your code:
-![keys]()
-![config]()
+![keys](./images/OAuth/keys.png)
+![config](./images/OAuth/config.png)
