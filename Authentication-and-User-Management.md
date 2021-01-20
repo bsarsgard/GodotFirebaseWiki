@@ -40,6 +40,7 @@ From there the script will POST the data to the `signup_request_url` and add the
 ```
 Firebase.Auth.login_with_email(email, password)
 ```
+[**Usage Example**](#ex-login-with-email-and-password)
 
 This will create the login_request_body variable and insert the correct data into it.
 
@@ -90,7 +91,8 @@ Firebase.Auth.get_google_auth()
 var oath_token : String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
 Firebase.Auth.login_with_oauth(oath_token)
 ```
-
+[**Usage Example**](#ex-login-with-google-oauth)
+  
 In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory. This is due to Google requirements with WEB applications.  
 Once the configuration is completed, call the `Firebase.Auth.get_google_auth()` to open user's web browser redirecting to a Google Access page.  
 Here the user can chose whatever Google account prefers to give permissions to log in.  
@@ -209,10 +211,10 @@ This should be used with extreme caution as there is no restoring an account onc
 # Examples
 
 List of examples:
-- [Login with Email and Password](#login-with-email-and-password)
-- [Login with Google OAuth](#login-with-google-oauth)
+- [Login with Email and Password](#ex-login-with-email-and-password)
+- [Login with Google OAuth](#ex-login-with-google-oauth)
 
-#### Login with Email and Password
+#### ex. Login with Email and Password
 ![signup login page](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/signup_login_page.png)
 ```python
 extends Node2D
@@ -243,7 +245,7 @@ func on_login_failed(error_code, message):
 
 
 ***
-#### Login with Google OAuth
+#### ex. Login with Google OAuth
 ![signup login page](./images/OAuth/example/example.png)
 ```python
 extends Node
