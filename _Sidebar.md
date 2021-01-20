@@ -9,6 +9,7 @@
 ### Installation and Activation
 - [Installation](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#installation)
 - [Activation](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#activation)
+- [OAuth Configuration](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration)
 ### API Usage
 - [Authentication and User Management](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management)
 - [Firestore](https://github.com/WolfgangSenff/GodotFirebase/wiki/Firestore)
