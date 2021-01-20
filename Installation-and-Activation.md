@@ -47,3 +47,20 @@ measurementId=""
 
 4. Use `Firebase.Database.get_database_reference(path, filter)` to add a listener at a given path in your database. It will return to you a value to which you can hook up to a few different signals, and to which you can push data. You do not have to manually add it to the scene tree, as it gets added automatically. You can listen to many places at once, as needed. You can, optionally, pass a Dictionary of tags (found in FirebaseDatabase) to values representing your filters and queries. Queries are currently cached, so they can't be dynamically updated, but I can add that if there's a desire.
 
+## Additional (OAuth configuration)
+In order to let users login with their own Google account to your app, the OAuth authentication process must be configured to work with this Plugin.  
+This process will not be enabled with the main configuration, but still it is *not mandatory* to use standard login methods.  
+To enable Google OAuth Authentication, follow these steps:
+1. In your project, enable "Google" in "Sign-in Method":
+![enable_sign_in]()
+2. Go to [console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials):
+![go_to]()
+3. Select the project you are working on (and eventually, your organization):
+![select_project]()
+4. Press the "+ Create Credentials" button and chose "ID Client OAuth" to register new credentials:
+![create_credentials]()
+5. Select **Desktop Application**, then give a name to your credentials:
+![desktop]()
+6. Create your credentials and copy-paste them in the configuration file `override.cfg`, or directly in your code:
+![keys]()
+![config]()
