@@ -4,6 +4,8 @@ This plugin offers several methods to call these APIs just with one line of code
 ## Contents on this page:
 - [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
 - [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
+- [Login Anonymously](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-anonymously)
+- [Login with OAuth (Google)](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-google)
 - [Verify User Account](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#verify-user-account)
 - [Get User Data](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#get-user-data)
 - [Change User Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-email)
@@ -66,8 +68,42 @@ If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
-### Verify User Account
+### Login Anonymously
+```python
+Firebase.Auth.login_anonymous()
 ```
+
+This will issue an anonymous request login to Firebase.  
+If successful, an anonymous user will be identified with an UUID in users list.  
+The UUID will be returned in the response body, if `login_succeeded` properly connected.  
+
+#### Body has ADMIN_ONLY_OPERATION (400)
+If the response body has `ADMIN_ONLY_OPERATION` or an `error 400 ADMIN_ONLY_OPERATION` is returned from `login_failed` signal, Anonymous Sign-in has not been enabled in your project settings.  
+To do so, go to `Authentication > Sign-in method` inside your project and enable `Anonymous` (the last one in the list).  
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+### Login with OAuth (Google)
+```python
+Firebase.Auth.get_google_auth()
+var oath_token : String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
+Firebase.Auth.login_with_oauth(oath_token)
+```
+
+In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory. This is due to Google requirements with WEB applications.  
+Once the configuration is completed, call the `Firebase.Auth.get_google_auth()` to open user's web browser redirecting to a Google Access page.  
+Here the user can chose whatever Google account prefers to give permissions to log in.  
+Once an account is selected, the user will be redirected to a page containing the oath token required to log in your app.  
+The oath token could be pasted to a LineEdit or a custom editable text Control, then to log in with oauth call the `Firebase.Auth.login_with_oauth(oauth_token)` with `oauth_token` being the pasted token. Can directly be `$LineEdit.get_text()`.  
+If login was successful, the response body will contain all user's informations related to the Google account. The user account will be listed.  
+
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+### Verify User Account
+```python
 Firebase.Auth.send_account_verification_email()
 ```
 
