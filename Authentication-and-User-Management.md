@@ -118,6 +118,9 @@ var account_verification_body = {
 
 From there the script will POST the data to the `oobcode_request_url`, and wait for a response. The email associated with the ID will receive an email with a link to verify their account.
 
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+
 ***
 ### Get User Data
 ```
@@ -125,6 +128,8 @@ Firebase.Auth.get_user_data()
 ```
 
 This function returns all the information for the currently logged in user by send the current ID Token. The script will post the data to the `userdata_request_url`, and wait for a response.
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
 ### Change User Email
@@ -145,6 +150,8 @@ var change_email_body = {
 
 From there the script will post the data to the `update_account_request_url`, and wait for a response. The email for the associated user will then be updated in Firebase. Note that this function is for a user to change their own email, an admin can edit the email with the Web GUI.
 
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
 ***
 ### Change User Password
 > Note that there is no verify step here. This function will change the password as soon as it is run
@@ -164,6 +171,8 @@ var change_password_body = {
 
 From there the script will post the data to the `update_account_request_url`, and wait for a response. The password for the associated user will then be updated in Firebase. Note that this function is for a user to change their own password.
 
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
 ***
 ### Send Password Reset Email
 ```
@@ -181,6 +190,8 @@ var password_reset_body = {
 
 From there the script will POST the data to the `oobcode_request_url`, and wait for a response. The user will get an email from the system with a link to reset their password. 
 
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
 ***
 ### Delete User Account
 > Note that there is no verify step here. This function will delete the user account as soon as it is run
@@ -192,8 +203,10 @@ This function is used to delete the user account from Firebase for the currently
 
 This should be used with extreme caution as there is no restoring an account once it is gone. Note that this function is for a user to delete their own account, an admin can also do this via the Web GUI.
 
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
 ***
-## Examples
+# Examples
 
 List of examples:
 - [Login with Email and Password](#login-with-email-and-password)
@@ -226,7 +239,7 @@ func on_login_failed(error_code, message):
 	print("error code: " + str(error_code))
 	print("message: " + str(message))
 ```
-<p align="right"><a href="#contents-on-this-page">Back</a></p>  
+<p align="right"><a href="#contents-on-this-page">Top</a> // <a href="#examples">Back</a></p>  
 
 
 ***
@@ -250,6 +263,6 @@ func _on_SignInWithGoogle_button_pressed():
 	$Label.set_text("Exchanging authorization code with a oath token...")
 	Firebase.Auth.login_with_oauth($LineEdit.get_text())
 ```
-<p align="right"><a href="#contents-on-this-page">Top</a>		<a href="#examples">Back</a></p>  
+<p align="right"><a href="#contents-on-this-page">Top</a> // <a href="#examples">Back</a></p>  
 
 ***
