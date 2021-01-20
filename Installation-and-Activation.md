@@ -54,7 +54,7 @@ To enable Google OAuth Authentication, follow these steps:
 1. In your project, enable "Google" in "Sign-in Method":
 ![enable_sign_in]()
 2. Go to [console.cloud.google.com/apis/credentials](https://console.cloud.google.com/apis/credentials):
-![go_to](/images/OAuth/project.gif)
+![go_to](./images/OAuth/browser.png)
 3. Select the project you are working on (and eventually, your organization):
 ![select_project]()
 4. Press the "+ Create Credentials" button and chose "ID Client OAuth" to register new credentials:
