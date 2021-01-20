@@ -31,13 +31,13 @@ firestore_collection = Firebase.Firestore.collection('COLLECTION_NAME')
 The following methods will let you return a document from Firestore with the `DOCUMENT_ID` that is specified to an object called `firestore_document`: 
 1. Call the `.get()` function and than yield for the collection to return it with a signal
 ```gdscript
-var collection : FirestoreCollectoin = Firebase.Firestore.collection(COLLECTION_ID)
+var collection : FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
 collection.get(DOCUMENT_ID)
 var document : FirestoreDocument = yield(collection, "get_document")
 ```
 2. Connect a signal to the collection and get the document separately
-```python
-var collection : FirestoreCollectoin = Firebase.Firestore.collection(COLLECTION_ID)
+```gdscript
+var collection : FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
 collection.connect("get_document",self,"_on_get_document")
 collection.get(DOCUMENT_ID)
 
