@@ -195,6 +195,10 @@ This should be used with extreme caution as there is no restoring an account onc
 ***
 ## Examples
 
+List of examples:
+- ![Login with Email and Password](#login-with-email-and-password)
+- ![Login with Google OAuth](#login-with-google-oauth)
+
 #### Login with Email and Password
 ![signup login page](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/signup_login_page.png)
 ```python
@@ -246,6 +250,6 @@ func _on_SignInWithGoogle_button_pressed():
 	$Label.set_text("Exchanging authorization code with a oath token...")
 	Firebase.Auth.login_with_oauth($LineEdit.get_text())
 ```
-<p align="right"><a href="#contents-on-this-page">Back</a></p>  
+<p align="right"><a href="#contents-on-this-page">Top</a><a href="#examples">Back</a></p>  
 
 ***
