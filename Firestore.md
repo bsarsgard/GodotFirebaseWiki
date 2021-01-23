@@ -60,7 +60,7 @@
 |-|-|
 |`static dict2fields(dictionary : Dictionary) -> Dictionary`|Parse a GDScript Dictionary to a Firebase dictionary of fields.|  
 |`static fields2dict(fields : Dictionary) -> Dictionary`|Parse a Firebase dictionary of fields to a GDScript Dictionary.|  
-|`_to_string()`|Automatically called on `print(document) to print a formatted document.`|
+|`_to_string() -> String`|Automatically called on `print(document)` to print a formatted document.|
 <br/>
 
 |Properties|Description|
