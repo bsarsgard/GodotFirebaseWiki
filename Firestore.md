@@ -6,14 +6,83 @@
 - [Common Errors](https://github.com/WolfgangSenff/GodotFirebase/wiki/Firestore#common-errors)
 
 ***
+## Firestore
+> Firebase.Firestore
+
+|Functions|Description|
+|-|-|
+|`collection(collection_path : String) -> FirestoreCollection`|Create a reference to a collection inside Firestore.|  
+|`list(collection_path : String) -> void`|List all contents of a path in Firestore.|  
+<br/>
+
+|Properties|Description|
+|-|-|
+|`collections : Dictionary`|A Dictionary containing all referenced collections.|  
+|`auth : Dictionary`|A Dictionary containing all auth info for the current authenticated user.|  
+<br/>
+
+|Signals|Description|
+|-|-|
+|`listed_documents(documents)`|Emitted when the `list()` request is processed.|
+<br/>
+
+## FirestoreCollection
+> Firebase.Firestore.collection()
+
+|Functions|Description|
+|-|-|
+|`add(document_id : String, fields : Dictionary) -> void`|Add a Document to a Collection. If `document_id` is left to `""` the id will be randomically given by Firebase.|  
+|`update(document_id : String, fields : Dictionary) -> void`|Update a specified Document to a Collection. If `document_id` is left to `""` the id will be randomically given by Firebase, creating a new Document. If the document with the given `document_id` does not exist, it will be created.|  
+|`get(document_id : String) -> void`|Get a specific Document.|  
+|`delete(document_id : String) -> void`|Delete a specific Document.|  
+<br/>
+
+|Properties|Description|
+|-|-|
+|`base_url : String`||  
+|`extended_url : String`||  
+|`collection_name : String`||  
+<br/>
+
+|Signals|Description|
+|-|-|
+|`add_document(document_added : FirestoreDocument)`|Emitted when the `add()` request is processed.|
+|`update_document(document_updated : FirestoreDocument)`|Emitted when the `update()` request is processed.|
+|`get_document(document_got : FirestoreDocument)`|Emitted when the `get()` request is processed.|
+|`delete_document()`|Emitted when the `delete()` request is processed.|
+|`error(code, status, message)`|Emitted when a request has not processed correctly.|
+<br/>
+
+## FirestoreDocument
+> FirestoreDocument.new() or from a signal
+
+|Functions|Description|
+|-|-|
+|`static dict2fields(dictionary : Dictionary) -> Dictionary`|Parse a GDScript Dictionary to a Firebase dictionary of fields.|  
+|`static fields2dict(fields : Dictionary) -> Dictionary`|Parse a Firebase dictionary of fields to a GDScript Dictionary.|  
+|`_to_string()`|Automatically called on `print(document) to print a formatted document.`|
+<br/>
+
+|Properties|Description|
+|-|-|
+|`doc_name : String`|The document name.|  
+|`doc_fields : Dictionary`|The document fields, as a GDScript Dictionary.|
+|`create_at : String`|Timestamp of creation date.|  
+<br/>
+
+|Signals|Description|
+|-|-|
+|||
+<br/>
+***
 
 ## Connect To A Collection
 > Note you need to be authenticated for this to work
-```
+```gdscript
 Firebase.Firestore.collection('COLLECTION_NAME')
 ```
 The following will return a collection from Firestore called `firestore_collection`. This collection can be called on later when adding or getting documents from it.
-```
+```gdscript
 firestore_collection = Firebase.Firestore.collection('COLLECTION_NAME')
 ```
 
@@ -23,7 +92,7 @@ firestore_collection = Firebase.Firestore.collection('COLLECTION_NAME')
 
 ## Get A Document
 > Note you need to be authenticated and connected to a collection for this to work
-```
+```gdscript
 .get(documentId : String)
 ```
 
@@ -47,15 +116,12 @@ func _on_get_document(document : FirestoreDocument) -> void:
 	pass
 ``` 
 
-The following will parse the data into a human readable format by using the function `fields2dict`
+The following will parse the data into a human readable format with automatic parsing, from Firebase format to Dictionary.
 
-```
-print(firestore_document.fields2dict(firestore_document.document))
-```
-Alternatively, a direct print will return the same result. The parsing will be done internally.
 ```
 print(firestore_document)
 ```
+
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -63,17 +129,19 @@ print(firestore_document)
 
 ## Add A Document
 > Note you need to be authenticated and connected to a collection for this to work
-```
+```gdscript
 .add(documentId : String, fields : Dictionary = {})
 ```
 
-The following will add a new document into Firestore by first creating the object, and then adding it. The function `dict2fields` is used to convert the dictionary of fields into the correct format for Firestore to use.
+The following will add a new document into Firestore by first creating the object, and then adding it. 
 
 
 ```
-firestore_document : FirestoreDocument = FirestoreDocument.new()
-firestore_collection.add("DOCUMENT_ID", firestore_document.dict2fields({'name': 'Document Name', 'active': 'true'}))
+firestore_collection.add("DOCUMENT_ID", {'name': 'Document Name', 'active': 'true'})
 ```
+
+Internally, the `FirestoreCollection` instance will call the `dict2fields()` , used to convert the dictionary of fields into the correct format for Firestore to use.
+> Note: if "DOCUMENT_ID" is left as an empty String like `""` Firebase will assign to this document a random name. This name will be returned through FirestoreCollection signals.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
