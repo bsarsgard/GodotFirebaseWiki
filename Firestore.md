@@ -118,7 +118,7 @@ func _on_get_document(document : FirestoreDocument) -> void:
 
 The following will parse the data into a human readable format with automatic parsing, from Firebase format to Dictionary.
 
-```
+```gdscript
 print(firestore_document)
 ```
 
@@ -136,7 +136,7 @@ print(firestore_document)
 The following will add a new document into Firestore by first creating the object, and then adding it. 
 
 
-```
+```gdscript
 firestore_collection.add("DOCUMENT_ID", {'name': 'Document Name', 'active': 'true'})
 ```
 
@@ -160,7 +160,7 @@ There are some signals that can be connected to for the purpose of debugging
 
 These signals need to be connected to from the collection
 
-```
+```gdscript
 firestore_collection.connect("add_document", self, "on_document_add")
 firestore_collection.connect("get_document", self, "on_document_get")
 firestore_collection.connect("update_document", self, "on_document_update")
