@@ -11,15 +11,13 @@ The Realtime Database functionality includes dynamic updates via the server-sent
 > Firebase.Database
 
 |Functions|Description|
-
+|-|-|
 |`get_database_reference(path : String, filter : Dictionary) -> FirebaseDatabaseReference`|Create a reference to a specific path inside the Realtime Database.|
-<br/>
-
 <br/>
 
 ## FirebaseDatabaseReference
 > FirebaseDatabaseReference
-
+|-|-|
 |Signals|Description|
 |`new_data_update(data)`|Emitted when new data is added to the path.|
 |`patch_data_update(data)`|Emitted when data is updated within the path.|
