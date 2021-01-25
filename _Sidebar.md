@@ -13,5 +13,6 @@
 ### API Usage
 - [Authentication and User Management](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management)
 - [Firestore](https://github.com/WolfgangSenff/GodotFirebase/wiki/Firestore)
+- [Realtime Database](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database
 ### Implementation Examples
 - Coming Soon
