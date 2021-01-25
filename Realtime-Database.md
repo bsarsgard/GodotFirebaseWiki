@@ -2,9 +2,9 @@ The Realtime Database functionality includes dynamic updates via the server-sent
 
 
 ## Contents on this page:
-- [Connecting to a Path](https://github.com/GodotNuts/GodotFirebase/wiki/RealtimeDatabase#Connecting)
-- [Filter](https://github.com/GodotNuts/GodotFirebase/wiki/RealtimeDatabase#Filter)
-- [Update](https://github.com/GodotNuts/GodotFirebase/wiki/RealtimeDatabase#Update)
+- [Connecting to a Path](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database#Connecting)
+- [Filter](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database#Filter)
+- [Update](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database#Update)
 
 ***
 ## Database
