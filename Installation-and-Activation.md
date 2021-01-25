@@ -44,6 +44,7 @@ measurementId=""
 ```
 
 ![Project Settings Firebase](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/project_settings_firebase.png)
+**NOTE:** this image is just for demonstration purposes. **Edit API keys directly inside the override.cfg file, and not from Project Settings, since with current Godot version this setup won't work.**  
 
 4. Use `Firebase.Database.get_database_reference(path, filter)` to add a listener at a given path in your database. It will return to you a value to which you can hook up to a few different signals, and to which you can push data. You do not have to manually add it to the scene tree, as it gets added automatically. You can listen to many places at once, as needed. You can, optionally, pass a Dictionary of tags (found in FirebaseDatabase) to values representing your filters and queries. Queries are currently cached, so they can't be dynamically updated, but I can add that if there's a desire.
 
