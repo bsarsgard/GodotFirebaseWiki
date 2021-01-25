@@ -16,6 +16,25 @@ This plugin offers several methods to call these APIs just with one line of code
 
 ***
 
+## Auth
+> @Firebase.Auth
+
+|Functions|Description|
+|-|-|
+|`signup_with_email_and_password(email :String, password :String)`|Register a new user with email/password combination.|
+|`login_anonymous()`|Register and login with an anonymous client. **Note:** must be enabled from Firebase in sign-methods and proper rules must be applied to Firestore/Database.|
+|`login_with_email_and_password(email :String, password :String)`|Login a client with email/password combination.|
+|`login_with_oauth(oauth_token :String)`|Login a client with an oauth token. **Note:** an oauth2 authorization method must be implemented|
+
+|Signals|Description|
+|-|-|
+|`signup_succeeded(auth_info : Dictionary)`|Emitted upon successful `signup_with_email_and_password()` or `login_anonymous()` call.|
+|`login_succeeded(auth_info : Dictionary)`|Emitted upon successful `login_with_email_and_password()` or `login_with_oauth()` call.|
+|`login_failed(code :, message: String)`|Emitted upon unsuccessful signup/login functions|
+|`userdata_received(auth_info : FirebaseUserData)`|Emitted upon successful `get_user_data()`. Returns a `FirebaseUserData` instance of the current authorized client.|
+
+***
+
 ## Signup with Email
 ```
 Firebase.Auth.signup_with_email(email, password)
@@ -31,7 +50,9 @@ var login_request_body = {
    }
 ```
 
-From there the script will POST the data to the `signup_request_url` and add the user to the application  
+From there the script will POST the data to the `signup_request_url` and add the user to the application.  
+This method will emit a `signup_succeeded(auth_info : Dictionary)` signal if successful.  
+Otherwise, `login_failed(code :, message: String)` will be emitted.  
 <p align="right"><a href="#contents-on-this-page">Back</a></p>  
 
 
@@ -52,7 +73,9 @@ var login_request_body = {
    }
 ```
 
-From there the script will POST the data to the `signin_request_url`, and wait for a response. The function `func _on_FirebaseAuth_request_completed(result, response_code, headers, body)` will take that response and parse it out for you.
+From there the script will POST the data to the `signin_request_url`, and wait for a response. The function `func _on_FirebaseAuth_request_completed(result, response_code, headers, body)` will take that response and parse it out for you.  
+This method will emit a `login_succeeded(auth_info : Dictionary)` signal if successful.  
+Otherwise, `login_failed(code :, message: String)` will be emitted.  
 
 #### Unable to parse body
 If the script is unable to parse the body, it will print our an error to the console and 'return' out of the function
@@ -76,7 +99,9 @@ Firebase.Auth.login_anonymous()
 
 This will issue an anonymous request login to Firebase.  
 If successful, an anonymous user will be identified with an UUID in users list.  
-The UUID will be returned in the response body, if `login_succeeded` properly connected.  
+The UUID will be returned in the response body, if `signup_succeeded` properly connected.  
+This method will emit a `signup_succeeded(auth_info : Dictionary)` signal if successful.  
+Otherwise, `login_failed(code :, message: String)` will be emitted.  
 
 #### Body has ADMIN_ONLY_OPERATION (400)
 If the response body has `ADMIN_ONLY_OPERATION` or an `error 400 ADMIN_ONLY_OPERATION` is returned from `login_failed` signal, Anonymous Sign-in has not been enabled in your project settings.  
@@ -99,7 +124,8 @@ Here the user can chose whatever Google account prefers to give permissions to l
 Once an account is selected, the user will be redirected to a page containing the oath token required to log in your app.  
 The oath token could be pasted to a LineEdit or a custom editable text Control, then to log in with oauth call the `Firebase.Auth.login_with_oauth(oauth_token)` with `oauth_token` being the pasted token. Can directly be `$LineEdit.get_text()`.  
 If login was successful, the response body will contain all user's informations related to the Google account. The user account will be listed.  
-
+This method will emit a `login_succeeded(auth_info : Dictionary)` signal if successful.  
+Otherwise, `login_failed(code :, message: String)` will be emitted.  
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -129,7 +155,8 @@ From there the script will POST the data to the `oobcode_request_url`, and wait 
 Firebase.Auth.get_user_data()
 ```
 
-This function returns all the information for the currently logged in user by send the current ID Token. The script will post the data to the `userdata_request_url`, and wait for a response.
+This function returns all the information for the currently logged in user by send the current ID Token. The script will post the data to the `userdata_request_url`, and wait for a response.  
+This method will emit a `userdata_received(userdata : FirebaseUserData)` signal if successful.  
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -221,6 +248,7 @@ extends Node2D
 
 func _ready():
 	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
+	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	Firebase.Auth.connect("login_failed", self, "on_login_failed")
 
 func _on_login_pressed():
