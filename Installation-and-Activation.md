@@ -1,7 +1,7 @@
 ## Installation
 1. Install this plugin:
 	1. [**recommended**] Copy this repository and extract all of the `GodotFirebase-main` contents (`addons/` folder and `override.cfg` file) to the root of your project at `res://`  
-	*or*
+	*--- or ---*
 	2. [**not recommended - always check version**] Install this addon from the AssetLibrary inside Godot Engine's Editor: go to the `AssetLib` panel on the top bar and look for `GodotFirebase`
 2. Open your Project Settings
 3. Go to Plugins
