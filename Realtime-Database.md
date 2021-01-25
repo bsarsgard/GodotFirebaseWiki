@@ -4,7 +4,6 @@ The Realtime Database functionality includes dynamic updates via the server-sent
 ## Contents on this page:
 - [Connecting to a Path](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database#Connecting)
 - [Filter](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database#Filter)
-- [Update](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database#Update)
 
 ***
 ## Database
@@ -17,6 +16,7 @@ The Realtime Database functionality includes dynamic updates via the server-sent
 
 ## FirebaseDatabaseReference
 > FirebaseDatabaseReference
+
 |-|-|
 |Signals|Description|
 |`new_data_update(data)`|Emitted when new data is added to the path.|
@@ -28,6 +28,7 @@ The Realtime Database functionality includes dynamic updates via the server-sent
 
 ## Connecting
 > Note you need to be authenticated for this to work
+
 The below will get you a basic reference to a path in the database; this will be updated automatically as the path is updated in the realtime database.
 
 ```gdscript
@@ -36,22 +37,9 @@ var db_ref = Firebase.Database.get_database_reference("path_to_position_in_datab
 
 ## Filter
 > Note you need to be authenticated for this to work
+
 The below will get you a filtered database reference to a path in your database. Note the constants supported for filtering are contained in Firebase.Database, near the top of the file.
 
 ```gdscript
 var db_ref = Firebase.Database.get_database_reference("path_to_position_in_database", { Firebase.Database.LIMIT_TO_LAST : 10 })
 ```
-
-<p align="right"><a href="#contents-on-this-page">Back</a></p> 
-
-***
-
-## Update
-> Note you need to be authenticated
-The below will update the data at a given path.
-
-```gdscript
-func update(path : String, data : Dictionary) -> void:
-```
-
-***
