@@ -25,10 +25,10 @@ At the moment, there appears to be a bug with HTML5 and UWP export, but the team
 * Realtime Database
 * Firestore
 * Authentication and User Management
+* Storage
 
 ## Unsupported features
 * Dynamic Links - Link Shortener (in progress)
 * Analytics - no real REST API at the moment
-* Storage - preliminary investigations have begun
 * Offline support - preliminary investigations have begun
 * Remote Config - preliminary investigations have begun
