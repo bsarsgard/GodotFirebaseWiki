@@ -144,6 +144,16 @@ This function is used to store the returned auth data after logging in to an enc
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+### Check Encrypted Auth File
+```python
+Firebase.Auth.check_auth_file()
+```
+
+This function is used to check if the encrypted auth file exists on the device. The function checks the location used by the function `save_auth()`, and if the file is there it will load it for you.
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
 ### Load Encrypted Auth File
 > Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
 ```python
@@ -151,16 +161,6 @@ Firebase.Auth.load_auth()
 ```
 
 This function is used to load the data from an encrypted auth file saved with the function `save_auth()`. It will take the data and overwrite the current state of the variable `auth`. This function has no logic check to make sure the file exists, for that please use the function `check_auth_file()`
-
-<p align="right"><a href="#contents-on-this-page">Back</a></p> 
-
-***
-### Check Encrypted Auth File
-```python
-Firebase.Auth.check_auth_file()
-```
-
-This function is used to check if the encrypted auth file exists on the device. The function checks the location used by the function `save_auth()`, and if the file is there it will load it for you.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
