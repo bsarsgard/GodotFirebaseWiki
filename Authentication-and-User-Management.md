@@ -6,6 +6,9 @@ This plugin offers several methods to call these APIs just with one line of code
 - [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
 - [Login Anonymously](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-anonymously)
 - [Login with OAuth (Google)](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-google)
+- [Save Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#save-encrypted-auth-file)
+- [Check Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#load-encrypted-auth-file)
+- [Load Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#check-encrypted-auth-file)
 - [Verify User Account](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#verify-user-account)
 - [Get User Data](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#get-user-data)
 - [Change User Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-email)
@@ -127,6 +130,38 @@ If login was successful, the response body will contain all user's informations 
 This method will emit a `login_succeeded(auth_info : Dictionary)` signal if successful.  
 Otherwise, `login_failed(code :, message: String)` will be emitted.  
 
+<p align="right"><a href="#contents-on-this-page">Back</a></p>
+
+***
+### Save Encrypted Auth File
+> Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
+```python
+Firebase.Auth.save_auth(auth)
+```
+
+This function is used to store the returned auth data after logging in to an encrypted file on the device. This file can be used to keep a user signed in and not force them to login every time they open the application. This uses the OS of the device to secure the file with a password.
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+### Load Encrypted Auth File
+> Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
+```python
+Firebase.Auth.load_auth()
+```
+
+This function is used to load the data from an encrypted auth file saved with the function `save_auth()`. It will take the data and overwrite the current state of the variable `auth`. This function has no logic check to make sure the file exists, for that please use the function `check_auth_file()`
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+### Check Encrypted Auth File
+```python
+Firebase.Auth.check_auth_file()
+```
+
+This function is used to check if the encrypted auth file exists on the device. The function checks the location used by the function `save_auth()`, and if the file is there it will load it for you.
+
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
@@ -238,8 +273,9 @@ This should be used with extreme caution as there is no restoring an account onc
 # Examples
 
 List of examples:
-- [Login with Email and Password](#ex-login-with-email-and-password)
-- [Login with Google OAuth](#ex-login-with-google-oauth)
+- [Examples](#examples)
+			- [ex. Login with Email and Password](#ex-login-with-email-and-password)
+			- [ex. Login with Google OAuth](#ex-login-with-google-oauth)
 
 #### ex. Login with Email and Password
 ![signup login page](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/signup_login_page.png)
