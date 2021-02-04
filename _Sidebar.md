@@ -14,5 +14,6 @@
 - [Authentication and User Management](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management)
 - [Firestore](https://github.com/WolfgangSenff/GodotFirebase/wiki/Firestore)
 - [Realtime Database](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database)
+- [Storage](https://github.com/GodotNuts/GodotFirebase/wiki/Storage)
 ### Implementation Examples
 - Coming Soon
