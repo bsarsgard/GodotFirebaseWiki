@@ -278,7 +278,7 @@ var result : Array = yield(query_task, "task_finished")
 
 > Note: each FirestoreQuery function will always return itself, so queries component can be concatenated to create single-line queries
 
-```
+```gdscript
 # Do all the previous, but in one line
 var query : FirestoreQuery = FirestoreQuery.new().from("user_list").where("points", FirestoreQuery.OPERATOR.GREATER_THAN, 20).order_by("points", FirestoreQuery.DIRECTION.DESCENDING).limit(10)
 
