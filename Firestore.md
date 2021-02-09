@@ -17,8 +17,11 @@
 |[`FirestoreDocument`](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#firestoredocument)|An object representing a fetched, updated or deleted document in Firestore.|
 |[`FirestoreTask`](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#firestoretask)|Result of any request issued through Firestore. Processes the request, emits signals and returns a result.|
 |[`FirestoreQuery`](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#firestorequery)|An object representing a query to Firestore, used as a parameter for the `query()` function.|
-***
+
 <br/>
+
+***
+
 
 ## Firestore
 > Firebase.Firestore
@@ -69,7 +72,9 @@
 |`get_document(document_got : FirestoreDocument)`|Emitted when the `get()` request is processed by a `FirestoreTask`.|
 |`delete_document()`|Emitted when the `delete()` request is processed by a `FirestoreTask`.|
 |`error(code, status, message)`|Emitted when a request has not processed correctly by a `FirestoreTask`.|
+
 <br/>
+
 ***  
 
 ## FirestoreDocument
@@ -120,7 +125,9 @@
 |`get_document(document_got : FirestoreDocument)`|Emitted when the `get()` request is processed.|
 |`delete_document()`|Emitted when the `delete()` request is processed.|
 |`error(code, status, message)`|Emitted when a request has not processed correctly.|
+
 <br/>
+
 ***
 
 ## FirestoreQuery
@@ -146,6 +153,7 @@
 |`offset(offset : int)`|A `OFFSET` query on a Collection to define the amount of results to be skipped.|
 |`limit(limit : int)`|A `LIMIT` query on a Collection to define the amount of results to be returned.|
 <br/>  
+
 <p align="right"><a href="#contents-on-this-page">Back</a></p>
   
 ***  
