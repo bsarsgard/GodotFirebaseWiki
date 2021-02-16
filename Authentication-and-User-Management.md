@@ -1,4 +1,5 @@
 > You can query the Firebase Auth backend through a REST API. This can be used for various operations such as creating new users, signing in existing ones and editing or deleting these users.  
+
 This plugin offers several methods to call these APIs just with one line of code.
 
 ## Contents on this page:
@@ -60,6 +61,7 @@ Otherwise, `login_failed(code :, message: String)` will be emitted.
 
 
 ***
+
 ## Login with Email
 ```
 Firebase.Auth.login_with_email(email, password)
@@ -95,6 +97,7 @@ If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Login Anonymously
 ```python
 Firebase.Auth.login_anonymous()
@@ -113,6 +116,7 @@ To do so, go to `Authentication > Sign-in method` inside your project and enable
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Login with OAuth (Google)
 ```python
 Firebase.Auth.get_google_auth()
@@ -133,6 +137,7 @@ Otherwise, `login_failed(code :, message: String)` will be emitted.
 <p align="right"><a href="#contents-on-this-page">Back</a></p>
 
 ***
+
 ### Save Encrypted Auth File
 > Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
 ```python
@@ -144,6 +149,7 @@ This function is used to store the returned auth data after logging in to an enc
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Check Encrypted Auth File
 ```python
 Firebase.Auth.check_auth_file()
@@ -154,6 +160,7 @@ This function is used to check if the encrypted auth file exists on the device. 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Load Encrypted Auth File
 > Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
 ```python
@@ -165,6 +172,7 @@ This function is used to load the data from an encrypted auth file saved with th
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Verify User Account
 ```python
 Firebase.Auth.send_account_verification_email()
@@ -185,6 +193,7 @@ From there the script will POST the data to the `oobcode_request_url`, and wait 
 
 
 ***
+
 ### Get User Data
 ```
 Firebase.Auth.get_user_data()
@@ -196,6 +205,7 @@ This method will emit a `userdata_received(userdata : FirebaseUserData)` signal 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Change User Email
 > Note that there is no verify step here. This function will change the email as soon as it is run
 ```
@@ -217,6 +227,7 @@ From there the script will post the data to the `update_account_request_url`, an
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Change User Password
 > Note that there is no verify step here. This function will change the password as soon as it is run
 ```
@@ -238,6 +249,7 @@ From there the script will post the data to the `update_account_request_url`, an
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Send Password Reset Email
 ```
 Firebase.Auth.send_password_reset_email(email)
@@ -257,6 +269,7 @@ From there the script will POST the data to the `oobcode_request_url`, and wait 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 ### Delete User Account
 > Note that there is no verify step here. This function will delete the user account as soon as it is run
 ```
@@ -270,12 +283,13 @@ This should be used with extreme caution as there is no restoring an account onc
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
+
 # Examples
 
 List of examples:
 - [Examples](#examples)
-			- [ex. Login with Email and Password](#ex-login-with-email-and-password)
-			- [ex. Login with Google OAuth](#ex-login-with-google-oauth)
+      - [ex. Login with Email and Password](#ex-login-with-email-and-password)
+      - [ex. Login with Google OAuth](#ex-login-with-google-oauth)
 
 #### ex. Login with Email and Password
 ![signup login page](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/signup_login_page.png)
@@ -309,6 +323,7 @@ func on_login_failed(error_code, message):
 
 
 ***
+
 #### ex. Login with Google OAuth
 ![signup login page](./images/OAuth/example/example.png)
 ```python
