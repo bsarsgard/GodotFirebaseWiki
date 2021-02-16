@@ -15,5 +15,6 @@
 - [Firestore](https://github.com/WolfgangSenff/GodotFirebase/wiki/Firestore)
 - [Realtime Database](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database)
 - [Storage](https://github.com/GodotNuts/GodotFirebase/wiki/Storage)
+- [Dynamic Links](https://github.com/GodotNuts/GodotFirebase/wiki/Dynamic-Links)
 ### Implementation Examples
 - Coming Soon
