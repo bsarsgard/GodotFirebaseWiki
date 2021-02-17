@@ -9,7 +9,7 @@ The following is a set of guidelines for contributing to the Godot Firebase Plug
 GodotFirebase is built on top of [Godot](https://godotengine.org/). You will need to have Godot installed to use this plugin.
 
 ## Issues
-Please ensure the bug was not already reported by searching on GitHub under [issues](https://github.com/WolfgangSenff/GodotFirebase/issues). If you're unable to find an open issue addressing the bug, open a [new issue](https://github.com/WolfgangSenff/GodotFirebase/issues/new).
+Please ensure the bug was not already reported by searching on GitHub under [issues](https://github.com/GodotNuts/GodotFirebase/issues). If you're unable to find an open issue addressing the bug, open a [new issue](https://github.com/GodotNuts/GodotFirebase/issues/new).
 
 Please pay attention to the following points while opening an issue.
 
