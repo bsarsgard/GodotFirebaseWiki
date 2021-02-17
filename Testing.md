@@ -10,12 +10,6 @@ The easiest way to run all of this project's unit and integration tests is from 
 alias godot='/Applications/Godot.app/Contents/MacOS/Godot'
 ```
 
-Next, change into the `plugin/` subdirectory of this repository.
-
-```bash
-cd plugin/
-```
-
 From here, the all tests can be executed and the Gut test console opened with the following command.
 
 ```bash
