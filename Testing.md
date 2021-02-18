@@ -20,8 +20,8 @@ godot -d -s --path $PWD addons/gut/gut_cmdln.gd
 
 Tests exist in the following directories.
 
-- `plugin/test/unit` holds small tests of specific units/components/classes/methods.
-- `plugin/test/integration` holds large tests of the entire plugin's functionality combined.
+- `/test/unit` holds small tests of specific units/components/classes/methods.
+- `/test/integration` holds large tests of the entire plugin's functionality combined.
 
 Gut has an extensive API for writing tests. Recommended reading includes its [Quick Start page](https://github.com/bitwes/Gut/wiki/Quick-Start) and its [Creating Tests page](https://github.com/bitwes/Gut/wiki/Creating-Tests).
 
