@@ -3,6 +3,8 @@
 - [Connect To A Collection](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#connect-to-a-collection)
 - [Get A Document](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#get-a-document)
 - [Add A Document](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#add-a-document)
+- [Update A Document](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#update-a-document)
+- [Delete A Document](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#delete-a-document)
 - [Issue a Query](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#issue-a-query)
 - [Debugging](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#debugging)
 - [Common Errors](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#common-errors)
@@ -244,6 +246,34 @@ Internally, the `FirestoreCollection` instance will call the `dict2fields()` , u
 
 ***
 
+## Update A Document
+> Note you need to be authenticated and connected to a collection for this to work
+```gdscript
+.update(documentId : String, fields : Dictionary = {}) -> FirestoreTask
+```
+
+The following will update document in Firestore.
+
+
+```gdscript
+var up_task : FirestoreTask = firestore_collection.update("DOCUMENT_ID", {'name': 'Document Name', 'active': 'true'})
+var document : FirestoreDocument = yield(up_task, "task_finished")
+
+- or -
+
+var document : FirestoreDocument = yield(up_task, "update_document")
+
+- or -
+
+var document : FirestoreDocument = yield(Firebase.Firestore, "update_document")
+```
+
+Internally, the `FirestoreCollection` instance will call the `dict2fields()` , used to convert the dictionary of fields into the correct format for Firestore to use.
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+
 ## Delete A Document
 > Note you need to be authenticated and connected to a collection for this to work
 ```gdscript
@@ -255,6 +285,8 @@ The following will delete a new document in Firestore.
 var del_task : FirestoreTask = firestore_collection.delete("DOCUMENT_ID")
 var document : FirestoreDocument = yield(del_task, "task_finished")
 ```
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
 
