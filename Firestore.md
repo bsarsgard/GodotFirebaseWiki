@@ -244,6 +244,20 @@ Internally, the `FirestoreCollection` instance will call the `dict2fields()` , u
 
 ***
 
+## Delete A Document
+> Note you need to be authenticated and connected to a collection for this to work
+```gdscript
+.delete(documentId : String) -> FirestoreTask
+```
+
+The following will delete a new document in Firestore.
+```gdscript
+var del_task : FirestoreTask = firestore_collection.delete("DOCUMENT_ID")
+var document : FirestoreDocument = yield(del_task, "task_finished")
+```
+
+***
+
 ## Issue a Query
 > Note you need to be authenticated for this to work
 ```gdscript
