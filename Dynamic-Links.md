@@ -1,7 +1,7 @@
 > Firebase Dynamic Links allow you to generate shortlinks directly from your application
 
 ## Contents on this page:
-
+[Generate A link](https://github.com/GodotNuts/GodotFirebase/wiki/Dynamic-Links#generate-a-link)
 
 ## Generate A Link
 
