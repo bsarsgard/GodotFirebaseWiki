@@ -75,3 +75,96 @@ These objects are used to keep track of any of `StorageReference's` function cal
 |`TASK_LIST_ALL`||
 |`TASK_DELETE`||
 |`TASK_MAX`| This marks the amount of TASK enumerations.|
+
+***
+
+## Put File
+```
+Firebase.Storage.ref(storage refernce).put_file(local file)
+```
+[**Usage Example**](#ex-put-file)
+
+This will upload a local file into Storage for later use
+
+```python
+var upload_task = Firebase.Storage.ref("Firebasetester/upload/icon.png").put_file("res://icon.png")
+yield(upload_task, "task_finished")
+```
+
+***
+
+## Put String
+```
+Firebase.Storage.ref(storage refernce).put_string(String, {metadata})
+```
+[**Usage Example**](#ex-put-string)
+
+This will upload a string for later use
+
+```python
+upload_task = Firebase.Storage.ref("Firebasetester/upload/junkdata").put_string("Test", {})
+yield(upload_task, "task_finished")
+```
+
+***
+
+## Get Download URL
+```
+Firebase.Storage.ref(storage reference).get_download_url()
+```
+[**Usage Example**](#ex-get-download-url)
+
+This will get the download URL and display it in the console
+
+```python
+var url_task = Firebase.Storage.ref("Firebasetester/upload/icon.png").get_download_url()
+yield(url_task, "task_finished")
+print(url_task.data)
+```
+
+***
+
+## Get Metadata
+```
+Firebase.Storage.ref(storage reference).get_metadata()
+```
+[**Usage Example**](#ex-get-metadata)
+
+This will get download the metadata for an object in storage and print it to the console
+
+```python
+var meta_task = Firebase.Storage.ref("Firebasetester/upload/icon.png").get_metadata()
+yield(meta_task, "task_finished")
+print(meta_task.data)
+```
+
+***
+
+## Delete Object
+```
+Firebase.Storage.ref(storage reference).delete()
+```
+[**Usage Example**](#ex-delete-object)
+
+This will delete an object in storage 
+
+```python
+var delete_task = Firebase.Storage.ref("Firebasetester/upload/icon.png").delete()
+yield(delete_task, "task_finished")
+```
+
+***
+
+## List All Objects
+```
+Firebase.Storage.ref(storage reference).list_all()
+```
+[**Usage Example**](#ex-list-objects)
+
+This will list all objects in storage and print it to the console
+
+```python
+list_all_task = Firebase.Storage.ref("Firebasetester").list_all()
+yield(list_all_task, "task_finished")
+print(list_all_task.data)
+```
