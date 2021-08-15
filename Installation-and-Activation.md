@@ -31,7 +31,7 @@
 
     1. Take those values and copy them to the appropriate variables in `res://addons/godot-firebase/firebase.gd`.
 
-    2. (Recommended) Create a `override.cfg` file at the root of the project (specifically, `res://override.cfg`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General ↝ Firebase`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
+    2. (Recommended) Create a `.env` file at the root of the GodotFirebase plugin (specifically, `res://addons/godot-firebase/.env`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General ↝ Firebase`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
 
 ```
 [firebase/environment_variables]
