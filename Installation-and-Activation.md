@@ -2,7 +2,7 @@
 1. Install this plugin:
 	1. [**recommended**] Copy this repository and extract all of the `GodotFirebase-main` contents (`addons/` folder including `.env` file) to the root of your project at `res://`  
 	*--- or ---*
-	2. [**not recommended - always check version**] Install this addon from the AssetLibrary inside Godot Engine's Editor: go to the `AssetLib` panel on the top bar and look for `GodotFirebase`. When choosing which folders to install, **only check `addons/` folder and `override.cfg` file**
+	2. [**not recommended - always check version**] Install this addon from the AssetLibrary inside Godot Engine's Editor: go to the `AssetLib` panel on the top bar and look for `GodotFirebase`. When choosing which folders to install, **only check `addons/` folder and `.env` file**
 2. Open your Project Settings
 3. Go to Plugins
 4. Activate the GDFirebase plugin<br>
