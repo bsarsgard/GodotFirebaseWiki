@@ -63,6 +63,6 @@ To enable Google OAuth Authentication, follow these steps:
 ![create_credentials](./images/OAuth/id.png)
 5. Select **Desktop Application**, then give a name to your credentials:
 ![desktop](./images/OAuth/type.png)
-6. Create your credentials and copy-paste them in the configuration file `override.cfg`, or directly in your code:
+6. Create your credentials and copy-paste them in the configuration file `.env`, or directly in your code:
 ![keys](./images/OAuth/keys.png)
 ![config](./images/OAuth/config.png)
