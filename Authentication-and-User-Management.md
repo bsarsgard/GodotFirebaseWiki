@@ -343,7 +343,7 @@ func on_login_failed(error_code, message):
 
 #### ex. Login with Google OAuth
 ![signup login page](./images/OAuth/example/example.png)
-```python
+```gdscript
 extends Node
 
 func _ready():
@@ -355,7 +355,7 @@ func _on_login_succeeded(user : Dictionary):
 
 func _on_GetGoogleAuth_button_pressed():
 	$Label.set_text("Waiting for an authorization code...")
-	Firebase.Auth.get_google_auth()
+	Firebase.Auth.get_google_auth_manual()
 
 func _on_SignInWithGoogle_button_pressed():
 	$Label.set_text("Exchanging authorization code with a oath token...")
