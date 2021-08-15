@@ -49,9 +49,6 @@ clientSecret=""
 domainUriPrefix=""
 ```
 
-![Project Settings Firebase](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/project_settings_firebase.png)
-**NOTE:** this image is just for demonstration purposes. **Edit API keys directly inside the override.cfg file, and not from Project Settings, since with current Godot version this setup won't work.**  
-
 ## (Additional) OAuth configuration
 In order to let users login with their own Google account to your app, the OAuth authentication process must be configured to work with this Plugin.  
 This process will not be enabled with the main configuration, but still it is *not mandatory* to use standard login methods.  
