@@ -174,6 +174,19 @@ var firestore_collection : FirestoreCollection = Firebase.Firestore.collection('
 
 ***
 
+## Turn Off Local Cache
+If you need to disable the local cache of the Firebase Plugin, you will need to change the following line in the `firestore.gd` file to false
+
+`addons > godot-firebase > firestore > firestore.gd`
+
+```gdscript
+var persistence_enabled : bool = false
+```
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+
 ## Get A Document
 > Note you need to be authenticated and connected to a collection for this to work
 ```gdscript
