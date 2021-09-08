@@ -34,8 +34,9 @@ This plugin offers several methods to call these APIs just with one line of code
 |Signals|Description|
 |-|-|
 |`signup_succeeded(auth_info : Dictionary)`|Emitted upon successful `signup_with_email_and_password()` or `login_anonymous()` call.|
+|`signup_failed(auth_info : Dictionary)`|Emitted upon unsuccessful `signup_with_email_and_password()` or `login_anonymous()` call.|
 |`login_succeeded(auth_info : Dictionary)`|Emitted upon successful `login_with_email_and_password()` or `login_with_oauth()` call.|
-|`login_failed(code :, message: String)`|Emitted upon unsuccessful signup/login functions|
+|`login_failed(code :, message: String)`|Emitted upon unsuccessful login functions|
 |`userdata_received(auth_info : FirebaseUserData)`|Emitted upon successful `get_user_data()`. Returns a `FirebaseUserData` instance of the current authorized client.|
 
 ***
@@ -317,6 +318,7 @@ func _ready():
 	Firebase.Auth.connect("login_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	Firebase.Auth.connect("signup_succeeded", self, "_on_FirebaseAuth_login_succeeded")
 	Firebase.Auth.connect("login_failed", self, "on_login_failed")
+	Firebase.Auth.connect("signup_failed", self, "on_signup_failed")
 
 func _on_login_pressed():
 	var email = $email.text
@@ -333,6 +335,10 @@ func _on_FirebaseAuth_login_succeeded(auth):
 	print(user)
     
 func on_login_failed(error_code, message):
+	print("error code: " + str(error_code))
+	print("message: " + str(message))
+
+func on_signup_failed(error_code, message):
 	print("error code: " + str(error_code))
 	print("message: " + str(message))
 ```
