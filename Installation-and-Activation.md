@@ -1,8 +1,8 @@
 ## Installation
 1. Install this plugin:
-	1. [**recommended**] Copy this repository and extract all of the `GodotFirebase-main` contents (`addons/` folder and `override.cfg` file) to the root of your project at `res://`  
+	1. [**recommended**] Copy this repository and extract all of the `GodotFirebase-main` contents (`addons/` folder including `.env` file) to the root of your project at `res://`  
 	*--- or ---*
-	2. [**not recommended - always check version**] Install this addon from the AssetLibrary inside Godot Engine's Editor: go to the `AssetLib` panel on the top bar and look for `GodotFirebase`. When choosing which folders to install, **only check `addons/` folder and `override.cfg` file**
+	2. [**not recommended - always check version**] Install this addon from the AssetLibrary inside Godot Engine's Editor: go to the `AssetLib` panel on the top bar and look for `GodotFirebase`. When choosing which folders to install, **only check `addons/` folder and `.env` file**
 2. Open your Project Settings
 3. Go to Plugins
 4. Activate the GDFirebase plugin<br>
@@ -31,7 +31,7 @@
 
     1. Take those values and copy them to the appropriate variables in `res://addons/godot-firebase/firebase.gd`.
 
-    2. (Recommended) Create a `override.cfg` file at the root of the project (specifically, `res://override.cfg`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General ↝ Firebase`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
+    2. (Recommended) Create a `.env` file at the root of the GodotFirebase plugin (specifically, `res://addons/godot-firebase/.env`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General ↝ Firebase`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
 
 ```
 [firebase/environment_variables]
@@ -49,9 +49,6 @@ clientSecret=""
 domainUriPrefix=""
 ```
 
-![Project Settings Firebase](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/project_settings_firebase.png)
-**NOTE:** this image is just for demonstration purposes. **Edit API keys directly inside the override.cfg file, and not from Project Settings, since with current Godot version this setup won't work.**  
-
 ## (Additional) OAuth configuration
 In order to let users login with their own Google account to your app, the OAuth authentication process must be configured to work with this Plugin.  
 This process will not be enabled with the main configuration, but still it is *not mandatory* to use standard login methods.  
@@ -66,6 +63,6 @@ To enable Google OAuth Authentication, follow these steps:
 ![create_credentials](./images/OAuth/id.png)
 5. Select **Desktop Application**, then give a name to your credentials:
 ![desktop](./images/OAuth/type.png)
-6. Create your credentials and copy-paste them in the configuration file `override.cfg`, or directly in your code:
+6. Create your credentials and copy-paste them in the configuration file `.env`, or directly in your code:
 ![keys](./images/OAuth/keys.png)
 ![config](./images/OAuth/config.png)

@@ -6,7 +6,8 @@ This plugin offers several methods to call these APIs just with one line of code
 - [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
 - [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
 - [Login Anonymously](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-anonymously)
-- [Login with OAuth (Google)](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-google)
+- [Login with OAuth2 (Manual)](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-manual)  
+- [Login with OAuth2 (Automatic)](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-automatic)
 - [Save Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#save-encrypted-auth-file)
 - [Check Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#check-encrypted-auth-file)
 - [Load Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#load-encrypted-auth-file)
@@ -117,16 +118,16 @@ To do so, go to `Authentication > Sign-in method` inside your project and enable
 
 ***
 
-### Login with OAuth (Google)
+### Login with OAuth (Manual)
 ```python
-Firebase.Auth.get_google_auth()
+Firebase.Auth.get_google_auth_manual()
 var oath_token : String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
 Firebase.Auth.login_with_oauth(oath_token)
 ```
 [**Usage Example**](#ex-login-with-google-oauth)
   
 In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory. This is due to Google requirements with WEB applications.  
-Once the configuration is completed, call the `Firebase.Auth.get_google_auth()` to open user's web browser redirecting to a Google Access page.  
+Once the configuration is completed, call the `Firebase.Auth.get_google_auth_manual()` to open user's web browser redirecting to a Google Access page.  
 Here the user can chose whatever Google account prefers to give permissions to log in.  
 Once an account is selected, the user will be redirected to a page containing the oath token required to log in your app.  
 The oath token could be pasted to a LineEdit or a custom editable text Control, then to log in with oauth call the `Firebase.Auth.login_with_oauth(oauth_token)` with `oauth_token` being the pasted token. Can directly be `$LineEdit.get_text()`.  
@@ -137,6 +138,22 @@ Otherwise, `login_failed(code :, message: String)` will be emitted.
 <p align="right"><a href="#contents-on-this-page">Back</a></p>
 
 ***
+
+### Login with OAuth (Automatic)
+```python
+Firebase.Auth.get_google_auth_localhost()
+```
+[**Usage Example**](#ex-login-with-google-oauth)
+  
+In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory. This is due to Google requirements with WEB applications.  
+Once the configuration is completed, call the `Firebase.Auth.get_google_auth_localhost()` to open user's web browser redirecting to a Google Access page.  
+Our plugin will automatically detect the generated OAuth2 token from the browser URL.  
+Even though the browser will show a 404 page, the user in your app will be correctly authenticated, so you can close the browser page.
+*Notice:* this process is configured to work on localhost. If you want to handle the token generation and redirect using a custom ip/domain, please contact us.
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p>
+
+***  
 
 ### Save Encrypted Auth File
 > Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
@@ -326,7 +343,7 @@ func on_login_failed(error_code, message):
 
 #### ex. Login with Google OAuth
 ![signup login page](./images/OAuth/example/example.png)
-```python
+```gdscript
 extends Node
 
 func _ready():
@@ -338,7 +355,7 @@ func _on_login_succeeded(user : Dictionary):
 
 func _on_GetGoogleAuth_button_pressed():
 	$Label.set_text("Waiting for an authorization code...")
-	Firebase.Auth.get_google_auth()
+	Firebase.Auth.get_google_auth_manual()
 
 func _on_SignInWithGoogle_button_pressed():
 	$Label.set_text("Exchanging authorization code with a oath token...")
