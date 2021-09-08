@@ -1,6 +1,7 @@
 ## Contents on this page:
 - [Class Table](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#class-table)
 - [Connect To A Collection](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#connect-to-a-collection)
+- [Turn Off Local Cache](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#turn-off-local-cache)
 - [Get A Document](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#get-a-document)
 - [Add A Document](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#add-a-document)
 - [Update A Document](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore#update-a-document)
