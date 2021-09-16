@@ -157,12 +157,11 @@ Even though the browser will show a 404 page, the user in your app will be corre
 ***  
 
 ### Save Encrypted Auth File
-> Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
 ```python
 Firebase.Auth.save_auth(auth)
 ```
 
-This function is used to store the returned auth data after logging in to an encrypted file on the device. This file can be used to keep a user signed in and not force them to login every time they open the application. This uses the OS of the device to secure the file with a password.
+This function is used to store the returned auth data after logging in to an encrypted file on any device. This file can be used to keep a user signed in and not force them to login every time they open the application. This uses the `apiKey` configured in your `.env` file to secure the auth file with a password.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -180,7 +179,6 @@ This function is used to check if the encrypted auth file exists on the device. 
 ***
 
 ### Load Encrypted Auth File
-> Note that this function does not work in HTML5 or UWP. This is a limitation of Godot
 ```python
 Firebase.Auth.load_auth()
 ```
