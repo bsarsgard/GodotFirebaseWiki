@@ -284,7 +284,7 @@ var document : FirestoreDocument = yield(Firebase.Firestore, "update_document")
 
 Internally, the `FirestoreCollection` instance will call the `dict2fields()` , used to convert the dictionary of fields into the correct format for Firestore to use.
 
-**NOTE!** this function will automatically update *only* the fields specified in the requests. This will help you update your document without overwriting those fields you don't specify in the request and don't want to touch.  
+**NOTE!** this function will automatically update *only* those fields specified in the requests. This will help you update your document without overwriting those fields you don't specify in the request and don't want to touch.  
 For instance, if the document in this example was like this (before the update):
 ```
 {
@@ -330,7 +330,7 @@ var document : FirestoreDocument = yield(del_task, "task_finished")
 Firebase.Firestore.query(FirestoreQuery.new()) -> FirestoreTask
 ```
 
-The following query some documents from a collection based on the value of a field. 
+The following query retrieves some documents from a collection based on the value of a field. 
 
 
 ```gdscript
