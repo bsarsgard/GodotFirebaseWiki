@@ -270,7 +270,7 @@ The following will update document in Firestore.
 
 
 ```gdscript
-var up_task : FirestoreTask = firestore_collection.update("DOCUMENT_ID", {'name': 'Document Name', 'active': 'true'})
+var up_task : FirestoreTask = firestore_collection.update("DOCUMENT_ID", {'name': 'Document Name', 'active': true})
 var document : FirestoreDocument = yield(up_task, "task_finished")
 
 - or -
@@ -283,6 +283,26 @@ var document : FirestoreDocument = yield(Firebase.Firestore, "update_document")
 ```
 
 Internally, the `FirestoreCollection` instance will call the `dict2fields()` , used to convert the dictionary of fields into the correct format for Firestore to use.
+
+**NOTE!** this function will automatically update *only* the fields specified in the requests. This will help you update your document without overwriting those fields you don't specify in the request and don't want to touch.  
+For instance, if the document in this example was like this (before the update):
+```
+{
+"name" : "A Name",
+"active" : false,
+"points" : 25,
+"directory": { "path" : "a path" }
+}
+```
+after the update it will look like this:
+```
+{
+"name" : "Document Name",
+"active" : true,
+"points" : 25,
+"directory": { "path" : "a path" }
+}
+```
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
