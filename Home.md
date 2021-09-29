@@ -26,6 +26,7 @@ At the moment, there appears to be a bug with HTML5 and UWP export, but the team
 * Authentication and User Management
 * Storage
 * Dynamic Links
+* Cloud Functions
 
 ## Unsupported features
 * Analytics - no real REST API at the moment
