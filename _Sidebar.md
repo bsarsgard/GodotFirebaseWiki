@@ -16,3 +16,4 @@
 - [Realtime Database](https://github.com/GodotNuts/GodotFirebase/wiki/Realtime-Database)
 - [Storage](https://github.com/GodotNuts/GodotFirebase/wiki/Storage)
 - [Dynamic Links](https://github.com/GodotNuts/GodotFirebase/wiki/Dynamic-Links)
+- [Cloud Functions](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions)
