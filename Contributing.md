@@ -31,3 +31,6 @@ Pull Requests are always welcome.
    * The relevant issue number, if applicable.
    * Any new features that have been added
    * Any relevant tests that have been run
+
+## Discussions
+Discussions are great for when you have a question or want to talk to us about the plugin. While we do try to monitor them, most of the discussions have moved over to our [Discord](https://discord.gg/xXKYN2ZxDB).
