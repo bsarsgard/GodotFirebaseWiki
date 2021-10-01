@@ -18,8 +18,6 @@ This plugin is designed around the Firebase REST API. This means it is massively
 * Linux
 * Serverless
 
-At the moment, there appears to be a bug with HTML5 and UWP export, but the team will be verifying/debugging it in the near future.
-
 ## Supported features
 * Realtime Database
 * Firestore
