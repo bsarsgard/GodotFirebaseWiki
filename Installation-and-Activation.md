@@ -1,3 +1,7 @@
+* [Installation](#installation)
+* [Activation](#activation)
+* [Exporting](#exporting)
+
 ## Installation
 1. Install this plugin:
 	1. [**recommended**] Copy this repository and extract all of the `GodotFirebase-main` contents (`addons/` folder including `.env` file) to the root of your project at `res://`  
@@ -66,3 +70,13 @@ To enable Google OAuth Authentication, follow these steps:
 6. Create your credentials and copy-paste them in the configuration file `.env`, or directly in your code:
 ![keys](./images/OAuth/keys.png)
 ![config](./images/OAuth/config.png)
+
+## Exporting (Important!)  
+When exporting your app for any platform at your choice, please make sure to let the engine know that the ".env" file is a resource that must be exported too.  
+By default Godot will not export all those resources it doesn't consider necessary for your app to optimize its size.  
+To make sure .env will be included in your binaries, 
+![img](https://i.imgur.com/eCpEszZ.png)  
+Alternatively, fill the configuration dictionary directly from code, at `addons/godot-firebase/firebase/ ↝ firebase.gd`:  
+![img](https://imgur.com/T0cIbCD.png)  
+
+**Note:** remember that when exporting your app in Text or Compiled mode, your files will still be accessible with some reverse engineering. To make sure your files won't be readable even if reverse engineered, [compile with an encryption key](https://docs.godotengine.org/en/stable/development/compiling/compiling_with_script_encryption_key.html).
