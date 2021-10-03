@@ -1,6 +1,6 @@
 * [Installation](#installation)
 * [Activation](#activation)
-* [Exporting](#exporting)
+* [Exporting](#exporting-important)
 
 ## Installation
 1. Install this plugin:
