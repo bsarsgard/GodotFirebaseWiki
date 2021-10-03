@@ -30,3 +30,5 @@ This plugin is designed around the Firebase REST API. This means it is massively
 * Analytics - no real REST API at the moment
 * Offline support - preliminary investigations have begun
 * Remote Config - preliminary investigations have begun
+
+Support email: godotnuts@gmail.com
