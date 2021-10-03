@@ -2,8 +2,8 @@
 
 * [Installation](#installation)
 * [Activation](#activation)
-* [(Additional) OAuth Configuration](#additional-oauth-configuration)
-* [(Important!) Exporting](#exporting-important)
+* [OAuth Configuration](#additional-oauth-configuration)
+* [Exporting](#exporting-important)
 
 ## Installation
 1. Install this plugin:
