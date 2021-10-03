@@ -1,3 +1,5 @@
+### Contents on this page
+
 * [Installation](#installation)
 * [Activation](#activation)
 * [Exporting](#exporting-important)
@@ -12,6 +14,11 @@
 4. Activate the GDFirebase plugin<br>
 ![Plugin Section](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/plugins_section.png)
 5. From there, you will have an autoload singleton with the variables Auth and Database. Reference it by using Firebase.Auth, etc.
+
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
 
 ## Activation
 
@@ -51,7 +58,11 @@ measurementId=""
 clientId=""
 clientSecret=""
 domainUriPrefix=""
-```
+```  
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
 
 ## (Additional) OAuth configuration
 In order to let users login with their own Google account to your app, the OAuth authentication process must be configured to work with this Plugin.  
@@ -69,7 +80,12 @@ To enable Google OAuth Authentication, follow these steps:
 ![desktop](./images/OAuth/type.png)
 6. Create your credentials and copy-paste them in the configuration file `.env`, or directly in your code:
 ![keys](./images/OAuth/keys.png)
-![config](./images/OAuth/config.png)
+![config](./images/OAuth/config.png)  
+
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
 
 ## Exporting (Important!)  
 When exporting your app for any platform at your choice, please make sure to let the engine know that the ".env" file is a resource that must be exported too.  
@@ -80,3 +96,8 @@ Alternatively, fill the configuration dictionary directly from code, at `addons/
 ![img](https://imgur.com/T0cIbCD.png)  
 
 **Note:** remember that when exporting your app in Text or Compiled mode, your files will still be accessible with some reverse engineering. To make sure your files won't be readable even if reverse engineered, [compile with an encryption key](https://docs.godotengine.org/en/stable/development/compiling/compiling_with_script_encryption_key.html).
+
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
