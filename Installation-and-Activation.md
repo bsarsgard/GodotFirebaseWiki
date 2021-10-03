@@ -2,7 +2,7 @@
 
 * [Installation](#installation)
 * [Activation](#activation)
-* [(Additional) OAuth Configuration] (#additional-oauth-configuration)
+* [(Additional) OAuth Configuration](#additional-oauth-configuration)
 * [(Important!) Exporting](#exporting-important)
 
 ## Installation
