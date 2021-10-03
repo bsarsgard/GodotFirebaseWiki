@@ -10,6 +10,7 @@
 - [Installation](https://github.com/GodotNuts/GodotFirebase/wiki/Installation-and-Activation#installation)
 - [Activation](https://github.com/GodotNuts/GodotFirebase/wiki/Installation-and-Activation#activation)
 - [OAuth Configuration](https://github.com/GodotNuts/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration)
+- [Exporting](https://github.com/GodotNuts/GodotFirebase/wiki/Installation-and-Activation#important-exporting)
 ### API Usage
 - [Authentication and User Management](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management)
 - [Firestore](https://github.com/GodotNuts/GodotFirebase/wiki/Firestore)
