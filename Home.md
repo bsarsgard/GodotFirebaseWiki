@@ -14,6 +14,7 @@ This plugin is designed around the Firebase REST API. This means it is massively
 * Android
 * iOS
 * Mac
+* HTML5
 * Windows
 * Linux
 * Serverless
