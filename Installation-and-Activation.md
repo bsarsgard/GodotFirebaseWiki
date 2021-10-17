@@ -4,6 +4,7 @@
 * [Activation](#activation)
 * [OAuth Configuration](#additional-oauth-configuration)
 * [Exporting](#exporting-important)
+* [Exporting - Android](#exporting-android)
 
 ## Installation
 1. Install this plugin:
@@ -97,6 +98,21 @@ Alternatively, fill the configuration dictionary directly from code, at `addons/
 ![img](https://imgur.com/T0cIbCD.png)  
 
 **Note:** remember that when exporting your app in Text or Compiled mode, your files will still be accessible with some reverse engineering. To make sure your files won't be readable even if reverse engineered, [compile with an encryption key](https://docs.godotengine.org/en/stable/development/compiling/compiling_with_script_encryption_key.html).
+
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+
+## Exporting Android
+Due to how Android handles permissions for Android Apps, you will need to enable at a minimum the following `Permissions` in your Android export template.
+
+* Access Network State
+![access_network_state](./images/android_network_state.png)
+* Internet
+![internet](./images/android_internet.png)
+
+If you do not enable these when exporting, the plugin will be unable to connect to the internet, and you will see issues like auth errors.
 
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
