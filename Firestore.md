@@ -242,7 +242,7 @@ The following will add a new document into Firestore by first creating the objec
 
 ```gdscript
 var add_task : FirestoreTask = firestore_collection.add("DOCUMENT_ID", {'name': 'Document Name', 'active': 'true'})
-var document : FirestoreDocument = yield(add_task, "task_finished")
+var document : FirestoreTask = yield(add_task, "task_finished")
 
 - or -
 
