@@ -282,9 +282,9 @@ var document : FirestoreDocument = yield(up_task, "update_document")
 var document : FirestoreDocument = yield(Firebase.Firestore, "update_document")
 ```
 
-Internally, the `FirestoreCollection` instance will call the `dict2fields()` , used to convert the dictionary of fields into the correct format for Firestore to use.
+Internally, the `FirestoreCollection` instance will call the `dict2fields()`, used to convert the dictionary of fields into the correct format for Firestore to use.
 
-**NOTE!** this function will automatically update *only* those fields specified in the requests. This will help you update your document without overwriting those fields you don't specify in the request and don't want to touch.  
+**NOTE!** this function will automatically update *only* those fields specified in the requests. This will help you update your document without overwriting the fields you don't specify in the request and don't want to touch.  
 For instance, if the document in this example was like this (before the update):
 ```
 {
@@ -356,13 +356,13 @@ var query_task : FirestoreTask = Firebase.Firestore.query(query)
 var result : Array = yield(query_task, "task_finished")
 ```
 
-> Note: each FirestoreQuery function will always return itself, so queries component can be concatenated to create single-line queries
+> Note: each FirestoreQuery function will always return itself, so the query component can be concatenated to create multi-line queries
 
 ```gdscript
 # Do all the previous, but in one line
 var query : FirestoreQuery = FirestoreQuery.new().from("user_list").where("points", FirestoreQuery.OPERATOR.GREATER_THAN, 20).order_by("points", FirestoreQuery.DIRECTION.DESCENDING).limit(10)
 
-var result : Array = yield(Firestore.Firebase.query(query), "result_query")
+var result : Array = yield(Firebase.Firestore.query(query), "result_query")
 ```
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
