@@ -1,6 +1,5 @@
 ## Contents on this page:
 - [Class Table](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#class-table)
-- [Deploy a Cloud Function](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#deploy-a-function)
 - [Execute a Cloud function](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#execute-a-function)
 
 ***
@@ -16,32 +15,27 @@
 ***
 
 
-## Firestore
-> Firebase.Firestore
+## Functions
+> Firebase.Functions
 
 |Functions|Description|
 |-|-|
-|`collection(collection_path : String) -> FirestoreCollection`|Create a reference to a collection inside Firestore. Returns a reference to a collection.|  
-|`list(collection_path : String) -> FirestoreTask`|List all contents of a collection in Firestore.<br/>Returns a `FirestoreTask` issuing the request.|  
-|`query(firestore_query : FirestoreQuery) -> FirestoreTask`|Issue a query on Firestore.<br/>Returns a `FirestoreTask` issuing the request.|  
+|`execute(function : String, method: int, params: Dictionary = {}, body: Dictionary = {}) -> FunctionTask`|Executes a function with name `function`, using HTTP method `method`, with parameters `params`; if needed, can pass a body as well. Returns a FunctionTask.|
 <br/>
 
 |Properties|Description|
 |-|-|
-|`collections : Dictionary`|A Dictionary containing all referenced collections.|  
-|`auth : Dictionary`|A Dictionary containing all auth info for the current authenticated user.|  
+|`persistence_enabled : bool`|Defaults to true and attempts to optimize results through caching. Despite defaulting to true, we recommend turning it off for now, as it's purely experimental for now.|
 <br/>
 
 |Signals|Description|
 |-|-|
-|`listed_documents(documents : Array)`|Emitted when the `list()` request is processed successfully by a `FirestoreTask`.|
-|`result_query(result : Array)`|Emitted when the `query()` request is processed successfully by a `FirestoreTask`.|
-|`error(error : Dictionary)`|Emitted when a `query()` or `list()` request is not processed successfully by a `FirestoreTask`.|
+|`task_error(code : int, status : int, message : String)`|Emitted when a `function` execution request is not processed successfully by a `FunctionTask`.|
 <br/>
 ***
 
-## FirestoreTask
-> returned by a Firestore request
+## FunctionsTask
+> returned by a Function execution request
 
 |Functions|Description|
 |-|-|
@@ -50,21 +44,14 @@
 
 |Properties|Description|
 |-|-|
-|`data : Variant`|Contains the result of a processed Task.|  
-|`action : int`|Contains the action the task is processing or has processed.|
+|`data : Variant`|Contains the returned result of a processed Task.|
 <br/>
 
 |Signals|Description|
 |-|-|
-|`task_finished(result : Variant)`|Emitted when a Task has been processed. Returns the result of the request as a parameter. This is a lower level of signal communication between FirestoreTasks, Firestore and your application.|
-|`listed_documents(documents : Array)`|Emitted when the `list()` request is processed successfully.|
-|`result_query(result : Array)`|Emitted when the `query()` request is processed successfully.|
-|`error(error : Dictionary)`|Emitted when a `query()` or `list()` request is not processed successfully.|
-|`add_document(document_added : FirestoreDocument)`|Emitted when the `add()` request is processed.|
-|`update_document(document_updated : FirestoreDocument)`|Emitted when the `update()` request is processed.|
-|`get_document(document_got : FirestoreDocument)`|Emitted when the `get()` request is processed.|
-|`delete_document()`|Emitted when the `delete()` request is processed.|
-|`error(code, status, message)`|Emitted when a request has not processed correctly.|
+|`task_finished(result : Variant)`|Emitted when a Task has been processed. Returns the result of the request as a parameter. This is a lower level of signal communication between FunctionTasks, the inner Functions system, and your application.|
+|`function_executed(response : int, result : String)`|Emitted when the `execute()` request is processed successfully; generally, you should listen to this and the task_error signal to ensure you are getting all possible outcomes. Result is probably a json string.|
+|`task_error(code : int, status : int, data : String)`|Emitted when a Function `execute()` request is not processed successfully.|
 <br/>
 ***
 
@@ -72,14 +59,16 @@
   
 ***  
 
-## Connect To A Collection
-> Note you need to be authenticated for this to work
+## Executing a function
+> Notes: you must be authenticated for this to work, and further you must have a given cloud function defined in Firebase; this wiki does not supply instructions for how to do that - see https://firebase.google.com/docs/functions for more.
 ```gdscript
-Firebase.Firestore.collection('COLLECTION_NAME')
-```
-The following will return a collection from Firestore called `firestore_collection`. This collection can be called on later when adding or getting documents from it.
-```gdscript
-var firestore_collection : FirestoreCollection = Firebase.Firestore.collection('COLLECTION_NAME')
+Firebase.Functions.connect("task_error", self, "_on_task_error")
+
+...
+
+var task = Firebase.Functions.execute("MyFunctionName", HTTPClient.METHOD_POST, {}, { "user_id": Firebase.Auth.auth.local_id })
+var result_dict = yield(task, "function_executed")
+var user_info = MyUserInfo.new(result_dict.result) # Parse json into own user info object
 ```
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
@@ -87,9 +76,9 @@ var firestore_collection : FirestoreCollection = Firebase.Firestore.collection('
 ***
 
 ## Turn Off Local Cache
-If you need to disable the local cache of the Firebase Plugin, you will need to change the following line in the `firestore.gd` file to false
+If you need to disable the local cache of the Firebase Plugin, you will need to change the following line in the `functions.gd` file to false
 
-`addons > godot-firebase > firestore > firestore.gd`
+`addons > godot-firebase > functions > functions.gd`
 
 ```gdscript
 var persistence_enabled : bool = false
