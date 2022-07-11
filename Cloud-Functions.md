@@ -1,13 +1,13 @@
 ## Contents on this page:
 - [Class Table](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#class-table)
-- [Execute a Cloud function](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#execute-a-function)
+- [Execute a Cloud function](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#executing-a-cloud-function)
 
 ***
 # Class Table
 
 |Class|Description|
 |-|-|
-|[`FirebaseFunctions`](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#FirebaseFunctions)|Cloud Functions module, lets user execute cloud function through Rest API interface.|
+|[`Functions`](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#FirebaseFunctions)|Cloud Functions module, lets user execute cloud function through Rest API interface.|
 |[`FunctionTask`](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#FunctionTask)|Result of any request issued through Cloud Functions. Processes the request, emits signals and returns a result.|
 
 <br/>
@@ -34,7 +34,7 @@
 <br/>
 ***
 
-## FunctionsTask
+## FunctionTask
 > returned by a Function execution request
 
 |Functions|Description|
