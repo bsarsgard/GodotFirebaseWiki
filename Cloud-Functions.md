@@ -1,6 +1,7 @@
 ## Contents on this page:
 - [Class Table](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#class-table)
 - [Execute a Cloud function](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#executing-a-cloud-function)
+- [Examples](https://github.com/GodotNuts/GodotFirebase/wiki/Cloud-Functions#examples)
 
 ***
 # Class Table
@@ -83,6 +84,14 @@ If you need to disable the local cache of the Firebase Plugin, you will need to 
 ```gdscript
 var persistence_enabled : bool = false
 ```
+
+<p align="right"><a href="#contents-on-this-page">Back</a></p> 
+
+***
+
+## Examples
+You can find some examples of Cloud Functions in the following repository:
+- [Godot Firebase | Test Functions](https://github.com/GodotNuts/firebase.test-functions)
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
