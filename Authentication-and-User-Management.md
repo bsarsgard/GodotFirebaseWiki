@@ -3,21 +3,21 @@
 This plugin offers several methods to call these APIs just with one line of code.
 
 ## Contents on this page:
-- [Signup with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
-- [Login with Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
-- [Login Anonymously](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-anonymously)
-- [Login with OAuth2 (Manual)](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-manual)  
-- [Login with OAuth2 (Automatic)](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-automatic)
-- [Save Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#save-encrypted-auth-file)
-- [Check Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#check-encrypted-auth-file)
-- [Load Encrypted Auth File](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#load-encrypted-auth-file)
-- [Verify User Account](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#verify-user-account)
-- [Get User Data](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#get-user-data)
-- [Change User Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-email)
-- [Change User Password](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#change-user-password)
-- [Send Password Reset Email](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#send-password-reset-email)
-- [Delete User Account](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#delete-user-account)
-- [Examples](https://github.com/WolfgangSenff/GodotFirebase/wiki/Authentication-and-User-Management#examples)
+- [Signup with Email](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#signup-with-email)
+- [Login with Email](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#login-with-email)
+- [Login Anonymously](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#login-anonymously)
+- [Login with OAuth2 (Manual)](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-manual)  
+- [Login with OAuth2 (Automatic)](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-automatic)
+- [Save Encrypted Auth File](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#save-encrypted-auth-file)
+- [Check Encrypted Auth File](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#check-encrypted-auth-file)
+- [Load Encrypted Auth File](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#load-encrypted-auth-file)
+- [Verify User Account](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#verify-user-account)
+- [Get User Data](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#get-user-data)
+- [Change User Email](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#change-user-email)
+- [Change User Password](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#change-user-password)
+- [Send Password Reset Email](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#send-password-reset-email)
+- [Delete User Account](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#delete-user-account)
+- [Examples](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#examples)
 
 ***
 
@@ -130,7 +130,7 @@ Firebase.Auth.login_with_oauth(oath_token)
 ```
 [**Usage Example**](#ex-login-with-google-oauth)
   
-In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory. This is due to Google requirements with WEB applications.  
+In order to login with OAuth, [additional configuration passages](https://github.com/GodotNuts/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory. This is due to Google requirements with WEB applications.  
 Once the configuration is completed, call the `Firebase.Auth.get_google_auth_manual()` to open user's web browser redirecting to a Google Access page.  
 Here the user can chose whatever Google account prefers to give permissions to log in.  
 Once an account is selected, the user will be redirected to a page containing the oath token required to log in your app.  
@@ -180,7 +180,7 @@ In this case, the application will listen on `localhost:<port>` for the access t
 
 > ℹ️ Once your HTML5 app is web-hosted, remember to add to the redirect URIs list `https://<your_site>/<your_app_name>.html` and set the redirect uri accordingly in GDScript.  
 
-In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory.
+In order to login with OAuth, [additional configuration passages](https://github.com/GodotNuts/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory.
 
 ### List of Providers
 Currently supported providers
@@ -371,7 +371,7 @@ List of examples:
       - [ex. Login with Google OAuth](#ex-login-with-google-oauth)
 
 #### ex. Login with Email and Password
-![signup login page](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/signup_login_page.png)
+![signup login page](https://github.com/GodotNuts/GodotFirebase/wiki/images/signup_login_page.png)
 ```gdscript
 extends Node2D
 
