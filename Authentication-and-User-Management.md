@@ -121,7 +121,7 @@ To do so, go to `Authentication > Sign-in method` inside your project and enable
 
 ### Login with OAuth (Manual)
 
-> ⚠️ OAuth OOB method (manual copy/paste) will be deprecated by Google on October 3, 2022  
+<style>> ⚠️ OAuth OOB method (manual copy/paste) will be deprecated by Google on October 3, 2022</style>  
 
 ```gdscript
 Firebase.Auth.get_google_auth_manual()
