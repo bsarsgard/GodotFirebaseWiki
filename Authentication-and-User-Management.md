@@ -48,7 +48,7 @@ Firebase.Auth.signup_with_email(email, password)
 
 This will create the login_request_body variable and insert the correct data into it.
 
-```python
+```gdscript
 var login_request_body = {
     "email":"",
     "password":"",
@@ -72,7 +72,7 @@ Firebase.Auth.login_with_email(email, password)
 
 This will create the login_request_body variable and insert the correct data into it.
 
-```python
+```gdscript
 var login_request_body = {
     "email":"",
     "password":"",
@@ -101,7 +101,7 @@ If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER
 ***
 
 ### Login Anonymously
-```python
+```gdscript
 Firebase.Auth.login_anonymous()
 ```
 
@@ -120,7 +120,10 @@ To do so, go to `Authentication > Sign-in method` inside your project and enable
 ***
 
 ### Login with OAuth (Manual)
-```python
+
+> ⚠️ OAuth OOB method (manual copy/paste) will be deprecated by Google on October 3, 2022  
+
+```gdscript
 Firebase.Auth.get_google_auth_manual()
 var oath_token : String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
 Firebase.Auth.login_with_oauth(oath_token)
@@ -141,23 +144,83 @@ Otherwise, `login_failed(code :, message: String)` will be emitted.
 ***
 
 ### Login with OAuth (Automatic)
-```python
-Firebase.Auth.get_google_auth_localhost()
-```
-[**Usage Example**](#ex-login-with-google-oauth)
-  
-In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory. This is due to Google requirements with WEB applications.  
-Once the configuration is completed, call the `Firebase.Auth.get_google_auth_localhost()` to open user's web browser redirecting to a Google Access page.  
-Our plugin will automatically detect the generated OAuth2 token from the browser URL.  
-Even though the browser will show a 404 page, the user in your app will be correctly authenticated, so you can close the browser page.
-*Notice:* this process is configured to work on localhost. If you want to handle the token generation and redirect using a custom ip/domain, please contact us.
+```gdscript
+Firebase.Auth.connect("login_succeeded", self, "_on_login")
 
+Firebase.Auth.get_auth_localhost(provider, port) # (a)
+
+Firebase.Auth.get_auth_redirect(provider) # (b)
+```
+[**Usage Example**](#ex-login-with-google-oauth)  
+
+### Destkop
+🖥️ If your application will be published only for **Desktop** users and you **don't have a web hosting environment** where to redirect users, you can use (a) `Firebase.Auth.get_auth_localhost(provider, port)` to let OAuth2 flow redirect users directly to a static page provided by our plugin.
+
+In this case, the application will listen on `localhost:<port>` for the access token coming from your provider OAuth2 flow, and the user will be automatically logged in.
+
+> ℹ️ When setting up your provider, remember to add to the redirect URIs list `http://localhost:<port>`  
+
+
+### HTML5
+🌐 If your application will be published for HTML5 too, our plugin will be able to explot browser redirects to make a browser-compliant OAuth2 flow. You can even add this logic to your Desktop preexistent logic.
+```gdscript
+    # if OS.get_name() == "HTML5"
+    var provider: AuthProvider = Firebase.Auth.get_<your provider>()
+    var token = Firebase.Auth.get_token_from_url(provider)
+	# If your project is hosted on `https://<your_site>/<your_app>`
+	# Firebase.Auth.set_redirect_uri("https://<your_site>/<your_app>.html")
+    if token == null:
+        Firebase.Auth.get_auth_with_redirect(provider)
+    else:
+        Firebase.Auth.connect("login_succeeded", self, "_on_login")
+        Firebase.Auth.login_with_oauth(token, provider)
+```
+
+> ℹ️ When testing HTML5 locally, remember to add to the redirect URIs list `http://localhost:<port>/tmp_js_export.html`.  
+
+> ℹ️ Once your HTML5 app is web-hosted, remember to add to the redirect URIs list `https://<your_site>/<your_app_name>.html` and set the redirect uri accordingly in GDScript.  
+
+In order to login with OAuth, [additional configuration passages](https://github.com/WolfgangSenff/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory.
+
+### List of Providers
+Currently supported providers
+| | desktop | web | mobile (iOS) |
+|---|---|---|---|
+| Google | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Facebook | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| Github | :heavy_check_mark: | :x: | :heavy_check_mark: |
+| Twitter | :x: | :x: | :x: |
+
+
+### Configuration
+```.env
+# addons/godot-firebase/.env
+
+# Google --> Google Cloud Console
+[firebase/environment_variables]
+clientId = ""
+clientSecret = ""
+
+[firebase/auth_providers]
+# Github
+github_id = ""
+github_secret = ""
+
+# Facebook
+facebook_id = ""
+facebook_secret = ""
+
+# Twitter
+twitter_id = ""
+twitter_secret = ""
+```
+ 
 <p align="right"><a href="#contents-on-this-page">Back</a></p>
 
 ***  
 
 ### Save Encrypted Auth File
-```python
+```gdscript
 Firebase.Auth.save_auth(auth)
 ```
 
@@ -168,7 +231,7 @@ This function is used to store the returned auth data after logging in to an enc
 ***
 
 ### Check Encrypted Auth File
-```python
+```gdscript
 Firebase.Auth.check_auth_file()
 ```
 
@@ -179,7 +242,7 @@ This function is used to check if the encrypted auth file exists on the device. 
 ***
 
 ### Load Encrypted Auth File
-```python
+```gdscript
 Firebase.Auth.load_auth()
 ```
 
@@ -190,13 +253,13 @@ This function is used to load the data from an encrypted auth file saved with th
 ***
 
 ### Verify User Account
-```python
+```gdscript
 Firebase.Auth.send_account_verification_email()
 ```
 
 This function is used to send an account verification to an email associated with an ID. This will auto generate the account_verification_body and insert the correct data. This is best used after the user registers their account.
 
-```python
+```gdscript
 var account_verification_body = {
 	"requestType":"verify_email",
 	"idToken":"",
@@ -230,7 +293,7 @@ Firebase.Auth.change_user_email(email)
 
 This function is used to change the email address associated with the currently logged in user account. This function generates the change_email_body and inserts the correct data.
 
-```python
+```gdscript
 var change_email_body = {
 	"idToken":"",
 	"email":"",
@@ -252,7 +315,7 @@ Firebase.Auth.change_user_password(password)
 
 This function is used to change the password associated with the currently logged in user account. This function generates the change_password_body and inserts the correct data.
 
-```python
+```gdscript
 var change_password_body = {
 	"idToken":"",
 	"password":"",
@@ -273,7 +336,7 @@ Firebase.Auth.send_password_reset_email(email)
 
 This function is used to send a password reset email to a user. The function requires the email of the user who needs to be reset. It generates the password_reset_body and inserts all the correct data.
 
-```python
+```gdscript
 var password_reset_body = {
 	"requestType":"password_reset",
 	"email":"",
@@ -309,7 +372,7 @@ List of examples:
 
 #### ex. Login with Email and Password
 ![signup login page](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/signup_login_page.png)
-```python
+```gdscript
 extends Node2D
 
 func _ready():
