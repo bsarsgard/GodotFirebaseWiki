@@ -43,7 +43,7 @@ This plugin offers several methods to call these APIs just with one line of code
 
 ## Signup with Email
 ```
-Firebase.Auth.signup_with_email(email, password)
+Firebase.Auth.signup_with_email_and_password(email, password)
 ```
 
 This will create the login_request_body variable and insert the correct data into it.
