@@ -49,17 +49,28 @@
 ```
 [firebase/environment_variables]
 
-apiKey=""
-authDomain=""
-databaseURL=""
-projectId=""
-storageBucket=""
-messagingSenderId=""
-appId=""
-measurementId=""
-clientId=""
-clientSecret=""
-domainUriPrefix=""
+"apiKey"="",
+"authDomain"="",
+"databaseURL"="",
+"projectId"="",
+"storageBucket"="",
+"messagingSenderId"="",
+"appId"="",
+"measurementId"=""
+"clientId"=""
+"clientSecret"=""
+"domainUriPrefix"=""
+"functionsGeoZone"=""
+"cacheLocation"="user://.firebase_cache"
+
+[firebase/emulators/ports]
+
+authentication=""
+firestore=""
+realtimeDatabase=""
+functions=""
+storage=""
+dynamicLinks=""
 ```  
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
