@@ -40,11 +40,9 @@
     4. Add a name to your web app and click **Register App**<br>
     ![FB Register App](https://github.com/WolfgangSenff/GodotFirebase/wiki/images/fb_register_app.png)
 
-3. This will show a series of values called "config". To use them you have two options:
+3. This will show a series of values called "config". To use them you have to:
 
-    1. Take those values and copy them to the appropriate variables in `res://addons/godot-firebase/firebase/firebase.gd`.
-
-    2. (Recommended) Create a `.env` file at the root of the GodotFirebase plugin (specifically, `res://addons/godot-firebase/.env`). Specify those values as environment variables in this file (see example structure below). Reload the project, and you will find a new category inside `Project ↝ Project Settings ↝ General ↝ Firebase`, which is `Environment Variables`. Fill all the fields inside this new category and you will be good to go. 
+    1) Create an `.env` file at the root of the GodotFirebase plugin (specifically, `res://addons/godot-firebase/.env`). Specify those values as environment variables in this file (see example structure below).
 
 ```
 [firebase/environment_variables]
