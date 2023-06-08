@@ -59,7 +59,7 @@
 "clientSecret"=""
 "domainUriPrefix"=""
 "functionsGeoZone"=""
-"cacheLocation"="user://.firebase_cache"
+"cacheLocation"=""
 
 [firebase/emulators/ports]
 
