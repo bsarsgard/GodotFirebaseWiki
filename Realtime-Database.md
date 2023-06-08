@@ -40,7 +40,7 @@ var db_ref = Firebase.Database.get_database_reference("path_to_position_in_datab
 ## Filter
 > Note you need to be authenticated for this to work
 
-The below will get you a filtered database reference to a path in your database. Note the constants supported for filtering are contained in Firebase.Database, near the top of the file.
+The below will get you a filtered database reference to a path in your database. Note the constants supported for filtering are contained in FirebaseDatabaseReference, near the top of the file.
 
 ```gdscript
 var db_ref = Firebase.Database.get_database_reference("path_to_position_in_database", { FirebaseDatabaseReference.LIMIT_TO_LAST : 10 })
@@ -48,3 +48,13 @@ var db_ref = Firebase.Database.get_database_reference("path_to_position_in_datab
 
 Note that any data which is filtered is returned UNORDERED, regardless of which order you try to set on it. The reason for this can be found here:
 https://firebase.google.com/docs/database/rest/retrieve-data
+
+## Push data
+```gdscript
+db_ref.push({'username': username}) # new entry created in list at path_to_position_in_database; # listen to new_data_update to get the key and data that was pushed
+```
+
+## Update data
+```gdscript
+db_ref.update(data_key, {'user_name': new_username}) # patch_data_update will fire with the appropriate data; can get data_key from a successful new_data_update after a push
+```
