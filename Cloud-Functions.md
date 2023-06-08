@@ -13,8 +13,6 @@
 
 <br/>
 
-***
-
 
 ## Functions
 > Firebase.Functions
@@ -32,7 +30,6 @@
 |-|-|
 |`task_error(code: int, status: int, message: String)`|Emitted when a `function` execution request is not processed successfully by a `FunctionTask`.|
 <br/>
-***
 
 ## FunctionTask
 > returned by a Function execution request
@@ -51,9 +48,8 @@
 |-|-|
 |`task_finished(result: Variant)`|Emitted when a Task has been processed. Returns the result of the request as a parameter. This is a lower level of signal communication between FunctionTasks, the inner Functions system, and your application. In general, you should avoid using this signal.|
 |`function_executed(response: int, result: String)`|Emitted when the `execute()` request is processed successfully; generally, you should listen to this and the task_error signal to ensure you are getting all possible outcomes. Result is probably a json string.|
-|`task_error(code : int, status : int, data : String)`|Emitted when a Function `execute()` request is not processed successfully.|
+|`task_error(code: int, status: int, data: String)`|Emitted when a Function `execute()` request is not processed successfully.|
 <br/>
-***
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p>
   
