@@ -43,5 +43,8 @@ var db_ref = Firebase.Database.get_database_reference("path_to_position_in_datab
 The below will get you a filtered database reference to a path in your database. Note the constants supported for filtering are contained in Firebase.Database, near the top of the file.
 
 ```gdscript
-var db_ref = Firebase.Database.get_database_reference("path_to_position_in_database", { Firebase.Database.LIMIT_TO_LAST : 10 })
+var db_ref = Firebase.Database.get_database_reference("path_to_position_in_database", { FirebaseDatabaseReference.LIMIT_TO_LAST : 10 })
 ```
+
+Note that any data which is filtered is returned UNORDERED, regardless of which order you try to set on it. The reason for this can be found here:
+https://firebase.google.com/docs/database/rest/retrieve-data
