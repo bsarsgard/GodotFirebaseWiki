@@ -6,7 +6,7 @@
 ## Generate A Link
 
 ```gdscript
-generate_dynamic_link(long_link : String, APN : String, IBI : String, is_unguessable : bool)
+generate_dynamic_link(long_link: String, APN: String, IBI: String, is_unguessable: bool)
 ```
 
 * long_link -> The link you are trying to shorten
@@ -19,8 +19,18 @@ generate_dynamic_link(long_link : String, APN : String, IBI : String, is_unguess
 The following example will generate a dynamic link and then print it out to the console
 
 ```gdscript
+# 3.x
 func generate_link():
 	Firebase.DynamicLinks.connect("dynamic_link_generated", self, "print_link")
+	var link_to_test = 'https://google.com'
+	Firebase.DynamicLinks.generate_dynamic_link(link_to_test, "", "", true)
+
+func print_link(link_data):
+	print(link_data)
+
+# 4.x
+func generate_link():
+	Firebase.DynamicLinks.dynamic_link_generated.connect(print_link, CONNECT_ONE_SHOT)
 	var link_to_test = 'https://google.com'
 	Firebase.DynamicLinks.generate_dynamic_link(link_to_test, "", "", true)
 
