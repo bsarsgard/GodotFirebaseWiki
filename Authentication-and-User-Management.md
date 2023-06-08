@@ -125,8 +125,8 @@ To do so, go to `Authentication > Sign-in method` inside your project and enable
 
 ```gdscript
 Firebase.Auth.get_google_auth_manual()
-var oath_token: String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
-Firebase.Auth.login_with_oauth(oath_token)
+var oauth_token: String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
+Firebase.Auth.login_with_oauth(oauth_token, Firebase.Auth.get_GoogleProvider())
 ```
 [**Usage Example**](#ex-login-with-google-oauth)
   
@@ -134,7 +134,7 @@ In order to login with OAuth, [additional configuration passages](https://github
 Once the configuration is completed, call the `Firebase.Auth.get_google_auth_manual()` to open user's web browser redirecting to a Google Access page.  
 Here the user can chose whatever Google account prefers to give permissions to log in.  
 Once an account is selected, the user will be redirected to a page containing the oath token required to log in your app.  
-The oath token could be pasted to a LineEdit or a custom editable text Control, then to log in with oauth call the `Firebase.Auth.login_with_oauth(oauth_token)` with `oauth_token` being the pasted token. Can directly be `$LineEdit.get_text()`.  
+The oath token could be pasted to a LineEdit or a custom editable text Control, then to log in with oauth call the `Firebase.Auth.login_with_oauth(oauth_token, provider)` with `oauth_token` being the pasted token, and provider being a supported provider. oauth_token can directly be `$LineEdit.get_text()`.  
 If login was successful, the response body will contain all user's informations related to the Google account. The user account will be listed.  
 This method will emit a `login_succeeded(auth_info: Dictionary)` signal if successful.  
 Otherwise, `login_failed(code, message: String)` will be emitted.  
@@ -478,7 +478,7 @@ func _on_GetGoogleAuth_button_pressed():
 
 func _on_SignInWithGoogle_button_pressed():
 	$Label.set_text("Exchanging authorization code with a oath token...")
-	Firebase.Auth.login_with_oauth($LineEdit.get_text())
+	Firebase.Auth.login_with_oauth($LineEdit.get_text(), Firebase.Auth.get_GoogleProvider())
 
 # In 4.x
 
@@ -496,8 +496,8 @@ func _on_GetGoogleAuth_button_pressed():
 	Firebase.Auth.get_google_auth_manual()
 
 func _on_SignInWithGoogle_button_pressed():
-	$Label.set_text("Exchanging authorization code with a oath token...")
-	Firebase.Auth.login_with_oauth($LineEdit.get_text())
+	$Label.set_text("Exchanging authorization code with a oauth token...")
+	Firebase.Auth.login_with_oauth($LineEdit.get_text(), Firebase.Auth.get_GoogleProvider())
 ```
 <p align="right"><a href="#contents-on-this-page">Top</a> // <a href="#examples">Back</a></p>  
 
