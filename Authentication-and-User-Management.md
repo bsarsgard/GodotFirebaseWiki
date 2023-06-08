@@ -26,18 +26,18 @@ This plugin offers several methods to call these APIs just with one line of code
 
 |Functions|Description|
 |-|-|
-|`signup_with_email_and_password(email :String, password :String)`|Register a new user with email/password combination.|
+|`signup_with_email_and_password(email: String, password: String)`|Register a new user with email/password combination.|
 |`login_anonymous()`|Register and login with an anonymous client. **Note:** must be enabled from Firebase in sign-methods and proper rules must be applied to Firestore/Database.|
-|`login_with_email_and_password(email :String, password :String)`|Login a client with email/password combination.|
-|`login_with_oauth(oauth_token :String)`|Login a client with an oauth token. **Note:** an oauth2 authorization method must be implemented|
+|`login_with_email_and_password(email: String, password: String)`|Login a client with email/password combination.|
+|`login_with_oauth(oauth_token: String)`|Login a client with an oauth token. **Note:** an oauth2 authorization method must be implemented|
 
 |Signals|Description|
 |-|-|
-|`signup_succeeded(auth_info : Dictionary)`|Emitted upon successful `signup_with_email_and_password()` or `login_anonymous()` call.|
-|`signup_failed(auth_info : Dictionary)`|Emitted upon unsuccessful `signup_with_email_and_password()` or `login_anonymous()` call.|
-|`login_succeeded(auth_info : Dictionary)`|Emitted upon successful `login_with_email_and_password()` or `login_with_oauth()` call.|
-|`login_failed(code :, message: String)`|Emitted upon unsuccessful login functions|
-|`userdata_received(auth_info : FirebaseUserData)`|Emitted upon successful `get_user_data()`. Returns a `FirebaseUserData` instance of the current authorized client.|
+|`signup_succeeded(auth_info: Dictionary)`|Emitted upon successful `signup_with_email_and_password()` or `login_anonymous()` call.|
+|`signup_failed(auth_info: Dictionary)`|Emitted upon unsuccessful `signup_with_email_and_password()` or `login_anonymous()` call.|
+|`login_succeeded(auth_info: Dictionary)`|Emitted upon successful `login_with_email_and_password()` or `login_with_oauth()` call.|
+|`login_failed(code, message: String)`|Emitted upon unsuccessful login functions|
+|`userdata_received(auth_info: FirebaseUserData)`|Emitted upon successful `get_user_data()`. Returns a `FirebaseUserData` instance of the current authorized client.|
 
 ***
 
@@ -57,8 +57,8 @@ var login_request_body = {
 ```
 
 From there the script will POST the data to the `signup_request_url` and add the user to the application.  
-This method will emit a `signup_succeeded(auth_info : Dictionary)` signal if successful.  
-Otherwise, `login_failed(code :, message: String)` will be emitted.  
+This method will emit a `signup_succeeded(auth_info: Dictionary)` signal if successful.  
+Otherwise, `login_failed(code, message: String)` will be emitted.  
 <p align="right"><a href="#contents-on-this-page">Back</a></p>  
 
 
@@ -81,8 +81,8 @@ var login_request_body = {
 ```
 
 From there the script will POST the data to the `signin_request_url`, and wait for a response. The function `func _on_FirebaseAuth_request_completed(result, response_code, headers, body)` will take that response and parse it out for you.  
-This method will emit a `login_succeeded(auth_info : Dictionary)` signal if successful.  
-Otherwise, `login_failed(code :, message: String)` will be emitted.  
+This method will emit a `login_succeeded(auth_info: Dictionary)` signal if successful.  
+Otherwise, `login_failed(code, message: String)` will be emitted.  
 
 #### Unable to parse body
 If the script is unable to parse the body, it will print our an error to the console and 'return' out of the function
@@ -95,7 +95,7 @@ This refresh is needed for Firebase, as there is a limit to how long a connectio
 If the response body has `RESPONSE_USERDATA`, the script will emit a signal "userdata_received" with the userdata
 
 #### Body has INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER_DISABLED or WEAK_PASSWORD
-If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER_DISABLED or WEAK_PASSWORD`, the login has failed and the script will emit a signal "login_failed". It will also pass the error code and error message to be printed into the console
+If the response body has `INVALID_EMAIL, EMAIL_NOT_FOUND, INVALID_PASSWORD, USER_DISABLED or WEAK_PASSWORD`, the login has failed and the script will emit a signal "login_failed". It will also pass the error code and error message to be printed into the console.
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
@@ -106,13 +106,13 @@ Firebase.Auth.login_anonymous()
 ```
 
 This will issue an anonymous request login to Firebase.  
-If successful, an anonymous user will be identified with an UUID in users list.  
-The UUID will be returned in the response body, if `signup_succeeded` properly connected.  
-This method will emit a `signup_succeeded(auth_info : Dictionary)` signal if successful.  
-Otherwise, `login_failed(code :, message: String)` will be emitted.  
+If successful, an anonymous user will be identified with an UUID in your users list.  
+The UUID will be returned in the response body if `signup_succeeded` properly connected.  
+This method will emit a `signup_succeeded(auth_info: Dictionary)` signal if successful.  
+Otherwise, the `login_failed(code, message: String)` signal will be emitted.  
 
 #### Body has ADMIN_ONLY_OPERATION (400)
-If the response body has `ADMIN_ONLY_OPERATION` or an `error 400 ADMIN_ONLY_OPERATION` is returned from `login_failed` signal, Anonymous Sign-in has not been enabled in your project settings.  
+If the response body has `ADMIN_ONLY_OPERATION` or an `error 400 ADMIN_ONLY_OPERATION` is returned from the `login_failed` signal, Anonymous Sign-in has not been enabled in your project settings.  
 To do so, go to `Authentication > Sign-in method` inside your project and enable `Anonymous` (the last one in the list).  
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
@@ -125,7 +125,7 @@ To do so, go to `Authentication > Sign-in method` inside your project and enable
 
 ```gdscript
 Firebase.Auth.get_google_auth_manual()
-var oath_token : String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
+var oath_token: String = "<An oauth token, taken from the browser. Can be pasted to a LineEdit>"
 Firebase.Auth.login_with_oauth(oath_token)
 ```
 [**Usage Example**](#ex-login-with-google-oauth)
@@ -136,8 +136,8 @@ Here the user can chose whatever Google account prefers to give permissions to l
 Once an account is selected, the user will be redirected to a page containing the oath token required to log in your app.  
 The oath token could be pasted to a LineEdit or a custom editable text Control, then to log in with oauth call the `Firebase.Auth.login_with_oauth(oauth_token)` with `oauth_token` being the pasted token. Can directly be `$LineEdit.get_text()`.  
 If login was successful, the response body will contain all user's informations related to the Google account. The user account will be listed.  
-This method will emit a `login_succeeded(auth_info : Dictionary)` signal if successful.  
-Otherwise, `login_failed(code :, message: String)` will be emitted.  
+This method will emit a `login_succeeded(auth_info: Dictionary)` signal if successful.  
+Otherwise, `login_failed(code, message: String)` will be emitted.  
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p>
 
@@ -145,10 +145,14 @@ Otherwise, `login_failed(code :, message: String)` will be emitted.
 
 ### Login with OAuth (Automatic)
 ```gdscript
+# In 3.x
 Firebase.Auth.connect("login_succeeded", self, "_on_login")
-
 Firebase.Auth.get_auth_localhost(provider, port) # (a)
+Firebase.Auth.get_auth_redirect(provider) # (b)
 
+# In 4.x
+Firebase.Auth.login_succeeded.connect(_on_login)
+Firebase.Auth.get_auth_localhost(provider, port) # (a)
 Firebase.Auth.get_auth_redirect(provider) # (b)
 ```
 [**Usage Example**](#ex-login-with-google-oauth)  
@@ -158,12 +162,13 @@ Firebase.Auth.get_auth_redirect(provider) # (b)
 
 In this case, the application will listen on `localhost:<port>` for the access token coming from your provider OAuth2 flow, and the user will be automatically logged in.
 
-> ℹ️ When setting up your provider, remember to add to the redirect URIs list `http://localhost:<port>`  
+> ℹ️ When setting up your provider, remember to add `http://localhost:<port>` to the redirect URIs list in your Firebase console.  
 
 
 ### HTML5
-🌐 If your application will be published for HTML5 too, our plugin will be able to explot browser redirects to make a browser-compliant OAuth2 flow. You can even add this logic to your Desktop preexistent logic.
+🌐 If your application will be published for HTML5 too, our plugin will be able to use browser redirects to make a browser-compliant OAuth2 flow. You can even add this logic to your Desktop preexisting logic.
 ```gdscript
+# In 3.x
     # if OS.get_name() == "HTML5"
     var provider: AuthProvider = Firebase.Auth.get_<your provider>()
     var token = Firebase.Auth.get_token_from_url(provider)
@@ -174,11 +179,23 @@ In this case, the application will listen on `localhost:<port>` for the access t
     else:
         Firebase.Auth.connect("login_succeeded", self, "_on_login")
         Firebase.Auth.login_with_oauth(token, provider)
+
+# In 4.x
+    # if OS.get_name() == "HTML5"
+    var provider: AuthProvider = Firebase.Auth.get_<your provider>()
+    var token = Firebase.Auth.get_token_from_url(provider)
+	# If your project is hosted on `https://<your_site>/<your_app>`
+	# Firebase.Auth.set_redirect_uri("https://<your_site>/<your_app>.html")
+    if token == null:
+        Firebase.Auth.get_auth_with_redirect(provider)
+    else:
+        Firebase.Auth.login_succeeded.connect(_on_login)
+        Firebase.Auth.login_with_oauth(token, provider)
 ```
 
-> ℹ️ When testing HTML5 locally, remember to add to the redirect URIs list `http://localhost:<port>/tmp_js_export.html`.  
+> ℹ️ When testing HTML5 locally, remember to add `http://localhost:<port>/tmp_js_export.html` to the redirect URIs list in the Firebase console.  
 
-> ℹ️ Once your HTML5 app is web-hosted, remember to add to the redirect URIs list `https://<your_site>/<your_app_name>.html` and set the redirect uri accordingly in GDScript.  
+> ℹ️ Once your HTML5 app is web-hosted, remember to add `https://<your_site>/<your_app_name>.html` to the redirect URIs list in your Firebase console and set the redirect uri accordingly in GDScript.  
 
 In order to login with OAuth, [additional configuration passages](https://github.com/GodotNuts/GodotFirebase/wiki/Installation-and-Activation#additional-oauth-configuration) are mandatory.
 
@@ -224,7 +241,7 @@ twitter_secret = ""
 Firebase.Auth.save_auth(auth)
 ```
 
-This function is used to store the returned auth data after logging in to an encrypted file on any device. This file can be used to keep a user signed in and not force them to login every time they open the application. This uses the `apiKey` configured in your `.env` file to secure the auth file with a password.
+This function is used to store the returned auth data after logging in to an encrypted file on any device. This file can be used to keep a user signed in and not force them to login every time they open the application. This uses the `apiKey` configured in your `.env` file to secure the auth file with a password. Note that this may not work on every platform; in particular, it does not work on HTML builds, which do not have access to the file system.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -246,7 +263,7 @@ This function is used to check if the encrypted auth file exists on the device. 
 Firebase.Auth.load_auth()
 ```
 
-This function is used to load the data from an encrypted auth file saved with the function `save_auth()`. It will take the data and overwrite the current state of the variable `auth`. This function has no logic check to make sure the file exists, for that please use the function `check_auth_file()`
+This function is used to load the data from an encrypted auth file saved with the function `save_auth()`. It will take the data and overwrite the current state of the variable `auth`. This function has no logic check to make sure the file exists - for that, use the `check_auth_file()` function.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -257,7 +274,7 @@ This function is used to load the data from an encrypted auth file saved with th
 Firebase.Auth.send_account_verification_email()
 ```
 
-This function is used to send an account verification to an email associated with an ID. This will auto generate the account_verification_body and insert the correct data. This is best used after the user registers their account.
+This function is used to send an account verification to an email associated with an ID. This will auto-generate the account_verification_body and insert the correct data. This is best used after the user registers their account.
 
 ```gdscript
 var account_verification_body = {
@@ -278,20 +295,20 @@ From there the script will POST the data to the `oobcode_request_url`, and wait 
 Firebase.Auth.get_user_data()
 ```
 
-This function returns all the information for the currently logged in user by send the current ID Token. The script will post the data to the `userdata_request_url`, and wait for a response.  
-This method will emit a `userdata_received(userdata : FirebaseUserData)` signal if successful.  
+This function returns all the information for the currently logged in user by sending the current ID Token. The script will post the data to the `userdata_request_url`, and wait for a response.  
+This method will emit a `userdata_received(userdata: FirebaseUserData)` signal if successful.  
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
 
 ### Change User Email
-> Note that there is no verify step here. This function will change the email as soon as it is run
+> Note that there is no verify step here - this function will change the email as soon as it is run.
 ```
 Firebase.Auth.change_user_email(email)
 ```
 
-This function is used to change the email address associated with the currently logged in user account. This function generates the change_email_body and inserts the correct data.
+This function is used to change the email address associated with the currently logged in user account. This function generates the change_email_body request and inserts the correct data.
 
 ```gdscript
 var change_email_body = {
@@ -301,19 +318,19 @@ var change_email_body = {
    }
 ```
 
-From there the script will post the data to the `update_account_request_url`, and wait for a response. The email for the associated user will then be updated in Firebase. Note that this function is for a user to change their own email, an admin can edit the email with the Web GUI.
+From there the script will POST the data to the `update_account_request_url`, and wait for a response. The email for the associated user will then be updated in Firebase. Note that this function is for a user to change their own email; an admin can edit the email with the Web GUI.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
 
 ### Change User Password
-> Note that there is no verify step here. This function will change the password as soon as it is run
+> Note that there is no verify step here. This function will change the password as soon as it is run.
 ```
 Firebase.Auth.change_user_password(password)
 ```
 
-This function is used to change the password associated with the currently logged in user account. This function generates the change_password_body and inserts the correct data.
+This function is used to change the password associated with the currently logged in user account. This function generates the change_password_body request and inserts the correct data.
 
 ```gdscript
 var change_password_body = {
@@ -323,7 +340,7 @@ var change_password_body = {
    }
 ```
 
-From there the script will post the data to the `update_account_request_url`, and wait for a response. The password for the associated user will then be updated in Firebase. Note that this function is for a user to change their own password.
+From there the script will POST the data to the `update_account_request_url`, and wait for a response. The password for the associated user will then be updated in Firebase. Note that this function is for a user to change their own password.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -334,7 +351,7 @@ From there the script will post the data to the `update_account_request_url`, an
 Firebase.Auth.send_password_reset_email(email)
 ```
 
-This function is used to send a password reset email to a user. The function requires the email of the user who needs to be reset. It generates the password_reset_body and inserts all the correct data.
+This function is used to send a password reset email to a user. The function requires the email of the user who needs to be reset. It generates the password_reset_body request and inserts all the correct data.
 
 ```gdscript
 var password_reset_body = {
@@ -350,14 +367,14 @@ From there the script will POST the data to the `oobcode_request_url`, and wait 
 ***
 
 ### Delete User Account
-> Note that there is no verify step here. This function will delete the user account as soon as it is run
+> Note that there is no verify step here. This function will delete the user account as soon as it is run.
 ```
 Firebase.Auth.delete_user_account()
 ```
 
-This function is used to delete the user account from Firebase for the currently logged in user by sending the current ID Token. The script will post the data to the `delete_account_request_url`.
+This function is used to delete the user account from Firebase for the currently logged in user by sending the current ID Token. The script will POST the data to the `delete_account_request_url`.
 
-This should be used with extreme caution as there is no restoring an account once it is gone. Note that this function is for a user to delete their own account, an admin can also do this via the Web GUI.
+This should be used with extreme caution as there is no restoring an account once it is gone. Note that this function is for a user to delete their own account; an admin can also do this via the Web GUI.
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
@@ -373,6 +390,7 @@ List of examples:
 #### ex. Login with Email and Password
 ![signup login page](https://github.com/GodotNuts/GodotFirebase/wiki/images/signup_login_page.png)
 ```gdscript
+# In 3.x
 extends Node2D
 
 func _ready():
@@ -392,7 +410,40 @@ func _on_register_pressed():
 	Firebase.Auth.signup_with_email_and_password(email, password)
 
 func _on_FirebaseAuth_login_succeeded(auth):
-	var user = Firebase.Auth.get_user_data()
+	Firebase.Auth.get_user_data()
+        var user = yield(Firebase.Auth, "userdata_received")
+	print(user)
+    
+func on_login_failed(error_code, message):
+	print("error code: " + str(error_code))
+	print("message: " + str(message))
+
+func on_signup_failed(error_code, message):
+	print("error code: " + str(error_code))
+	print("message: " + str(message))
+
+# In 4.x
+
+extends Node2D
+
+func _ready():
+	Firebase.Auth.login_succeeded.connect(_on_FirebaseAuth_login_succeeded)
+	Firebase.Auth.signup_succeeded.connect(_on_FirebaseAuth_login_succeeded)
+	Firebase.Auth.login_failed.connect(on_login_failed)
+	Firebase.Auth.signup_failed.connect(on_signup_failed)
+
+func _on_login_pressed():
+	var email = $email.text
+	var password = $password.text
+	Firebase.Auth.login_with_email_and_password(email, password)
+
+func _on_register_pressed():
+	var email = $email.text
+	var password = $password.text
+	Firebase.Auth.signup_with_email_and_password(email, password)
+
+func _on_FirebaseAuth_login_succeeded(auth):
+	var user = await Firebase.Auth.get_user_data()
 	print(user)
     
 func on_login_failed(error_code, message):
@@ -411,6 +462,7 @@ func on_signup_failed(error_code, message):
 #### ex. Login with Google OAuth
 ![signup login page](./images/OAuth/example/example.png)
 ```gdscript
+# In 3.x
 extends Node
 
 func _ready():
@@ -418,6 +470,25 @@ func _ready():
 	Firebase.Auth.connect("login_failed",self, "_on_login_failed")
 
 func _on_login_succeeded(user : Dictionary):
+	$Label.set_text("Successfully logged in with oAuth2 as: {email}".format({email=user.email}))
+
+func _on_GetGoogleAuth_button_pressed():
+	$Label.set_text("Waiting for an authorization code...")
+	Firebase.Auth.get_google_auth_manual()
+
+func _on_SignInWithGoogle_button_pressed():
+	$Label.set_text("Exchanging authorization code with a oath token...")
+	Firebase.Auth.login_with_oauth($LineEdit.get_text())
+
+# In 4.x
+
+extends Node
+
+func _ready():
+	Firebase.Auth.login_succeeded.connect(_on_login_succeeded)
+	Firebase.Auth.login_failed.connect(_on_login_failed)
+
+func _on_login_succeeded(user: Dictionary):
 	$Label.set_text("Successfully logged in with oAuth2 as: {email}".format({email=user.email}))
 
 func _on_GetGoogleAuth_button_pressed():
