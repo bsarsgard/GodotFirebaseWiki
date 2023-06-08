@@ -11,7 +11,7 @@ The Realtime Database functionality includes dynamic updates via the server-sent
 
 |Functions|Description|
 |-|-|
-|`get_database_reference(path : String, filter : Dictionary) -> FirebaseDatabaseReference`||
+|`get_database_reference(path: String, filter: Dictionary) -> FirebaseDatabaseReference`||
 
 Create a reference to a specific path inside the Realtime Database.
 <br/>
