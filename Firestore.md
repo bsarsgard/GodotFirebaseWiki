@@ -215,19 +215,19 @@ func _on_get_document(document: FirestoreDocument) -> void:
 
 # 4.x
 var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
-var document = await collection.get(DOCUMENT_ID)
+var document = await collection.get_doc(DOCUMENT_ID)
 
 - or -
 
 var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
-var document_task: FirestoreTask = collection.get(DOCUMENT_ID)
+var document_task: FirestoreTask = collection.get_doc(DOCUMENT_ID)
 var document: FirestoreDocument = await document_task.get_document
 ```
 2. Connect a signal to the collection and get the document separately
 ```gdscript
 var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
 collection.get_document.connect(_on_get_document)
-collection.get(DOCUMENT_ID)
+collection.get_doc(DOCUMENT_ID)
 
 [...]
 
