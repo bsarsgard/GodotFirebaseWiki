@@ -174,10 +174,6 @@ var firestore_collection : FirestoreCollection = Firebase.Firestore.collection('
 
 ***
 
-<p align="right"><a href="#contents-on-this-page">Back</a></p> 
-
-***
-
 ## Get A Document
 > Note you need to be authenticated and connected to a collection for this to work
 ```gdscript
