@@ -167,7 +167,10 @@ Firebase.Firestore.collection('COLLECTION_NAME')
 ```
 The following will return a collection from Firestore called `firestore_collection`. This collection can be called on later when adding or getting documents from it.
 ```gdscript
-var firestore_collection : FirestoreCollection = Firebase.Firestore.collection('COLLECTION_NAME')
+# 3.x
+onready var firestore_collection : FirestoreCollection = Firebase.Firestore.collection('COLLECTION_NAME')
+# 4.x
+@onready var firestore_collection : FirestoreCollection = Firebase.Firestore.collection('COLLECTION_NAME')
 ```
 
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
