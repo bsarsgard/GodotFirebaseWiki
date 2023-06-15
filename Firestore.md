@@ -203,6 +203,7 @@ var document: FirestoreDocument = yield(document_task, "get_document")
 ```
 2. Connect a signal to the collection and get the document separately
 ```gdscript
+# 3.x
 var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
 collection.connect("get_document",self,"_on_get_document")
 collection.get(DOCUMENT_ID)
@@ -222,17 +223,6 @@ var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_I
 var document_task: FirestoreTask = collection.get_doc(DOCUMENT_ID)
 var document: FirestoreDocument = await document_task.get_document
 ```
-2. Connect a signal to the collection and get the document separately
-```gdscript
-var collection: FirestoreCollection = Firebase.Firestore.collection(COLLECTION_ID)
-collection.get_document.connect(_on_get_document)
-collection.get_doc(DOCUMENT_ID)
-
-[...]
-
-func _on_get_document(document: FirestoreDocument) -> void:
-    pass
-``` 
 
 The following will parse the data into a human readable format with automatic parsing, from Firebase format to Dictionary.
 
