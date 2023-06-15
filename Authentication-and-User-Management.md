@@ -8,6 +8,7 @@ This plugin offers several methods to call these APIs just with one line of code
 - [Login Anonymously](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#login-anonymously)
 - [Login with OAuth2 (Manual)](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-manual)  
 - [Login with OAuth2 (Automatic)](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#login-with-oauth-automatic)
+- [Logout](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#logout)
 - [Save Encrypted Auth File](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#save-encrypted-auth-file)
 - [Check Encrypted Auth File](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#check-encrypted-auth-file)
 - [Load Encrypted Auth File](https://github.com/GodotNuts/GodotFirebase/wiki/Authentication-and-User-Management#load-encrypted-auth-file)
@@ -30,6 +31,7 @@ This plugin offers several methods to call these APIs just with one line of code
 |`login_anonymous()`|Register and login with an anonymous client. **Note:** must be enabled from Firebase in sign-methods and proper rules must be applied to Firestore/Database.|
 |`login_with_email_and_password(email: String, password: String)`|Login a client with email/password combination.|
 |`login_with_oauth(oauth_token: String)`|Login a client with an oauth token. **Note:** an oauth2 authorization method must be implemented|
+|`logout`|Logout of the application and remove the encrypted auth file|
 
 |Signals|Description|
 |-|-|
@@ -38,6 +40,7 @@ This plugin offers several methods to call these APIs just with one line of code
 |`login_succeeded(auth_info: Dictionary)`|Emitted upon successful `login_with_email_and_password()` or `login_with_oauth()` call.|
 |`login_failed(code, message: String)`|Emitted upon unsuccessful login functions|
 |`userdata_received(auth_info: FirebaseUserData)`|Emitted upon successful `get_user_data()`. Returns a `FirebaseUserData` instance of the current authorized client.|
+|`logged_out`|Emitted when the user is logged out of the application|
 
 ***
 
@@ -156,6 +159,11 @@ Firebase.Auth.get_auth_localhost(provider, port) # (a)
 Firebase.Auth.get_auth_redirect(provider) # (b)
 ```
 [**Usage Example**](#ex-login-with-google-oauth)  
+
+### Logout
+```gdscript
+Firebase.Auth.logout()
+```
 
 ### Destkop
 🖥️ If your application will be published only for **Desktop** users and you **don't have a web hosting environment** where to redirect users, you can use (a) `Firebase.Auth.get_auth_localhost(provider, port)` to let OAuth2 flow redirect users directly to a static page provided by our plugin.
