@@ -409,7 +409,7 @@ var result: Array = yield(Firebase.Firestore.query(query), "result_query")
 var result: Array = await Firebase.Firestore.query(query).result_query
 ```
 
-> Note: to order_by multiple fields, you must use order_by_fielts
+> Note: to order_by multiple fields, you must use order_by_fields
 
 ```gdscript
 query.order_by_fields([
