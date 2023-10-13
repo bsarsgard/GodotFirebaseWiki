@@ -408,6 +408,15 @@ var result: Array = yield(Firebase.Firestore.query(query), "result_query")
 # 4.x
 var result: Array = await Firebase.Firestore.query(query).result_query
 ```
+
+> Note: to order_by multiple fields, you must use order_by_fields
+
+```gdscript
+query.order_by_fields([
+    ["points", FirestoreQuery.DIRECTION.DESCENDING],
+    ["name", FirestoreQuery.DIRECTION.DESCENDING]
+])
+```
 <p align="right"><a href="#contents-on-this-page">Back</a></p> 
 
 ***
